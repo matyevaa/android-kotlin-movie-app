@@ -1,13 +1,13 @@
-package com.example.movietime.ui.home
+package com.example.movietime.ui.discover
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class DiscoverViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is discover Fragment"
     }
     val text: LiveData<String> = _text
 }
