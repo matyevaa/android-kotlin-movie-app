@@ -3,6 +3,7 @@ package com.example.movietime
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,15 +15,21 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.movietime.data.Movie
 import com.example.movietime.databinding.ActivityMainBinding
-import com.example.movietime.ui.discover.MovieListAdapter
+import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.progressindicator.CircularProgressIndicator
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private val apiBaseUrl = "https://api.themoviedb.org/3/"
+    private val apiBaseUrl = "https://api.themoviedb.org/3"
     private val apiKey = "c281ffcb75795819837f8b2643521195"
 
     private lateinit var requestQueue: RequestQueue
@@ -49,8 +56,9 @@ class MainActivity : AppCompatActivity() {
 
         searchResultsListRV = findViewById(R.id.rv_search_results)
         searchResultsListRV.layoutManager = LinearLayoutManager(this)
+        searchResultsListRV.setHasFixedSize(true)
 
-        //searchResultsListRV.adapter = movieAdapter
+        searchResultsListRV.adapter = movieAdapter
 
         searchBtn.setOnClickListener {
             val query = searchBoxET.text.toString()
@@ -75,7 +83,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun doMovieSearch(q: String) {
-        Log.d("movies search", q)
+        Log.d("movies search function", q)
+        val url = "$apiBaseUrl/search/movie?api_key=$apiKey&query=$q&page=1"
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+        val jsonAdapter: JsonAdapter<MovieSearchResults> =
+            moshi.adapter(MovieSearchResults::class.java)
+
+        val req = StringRequest(
+            Request.Method.GET,
+            url,
+            {
+                Log.d("results", it)
+                var results = jsonAdapter.fromJson(it)
+                Log.d("movie result", results.toString())
+                movieAdapter.updateMovieList(results?.results)
+                loadingIndicator.visibility = View.INVISIBLE
+                searchResultsListRV.visibility = View.VISIBLE
+            },
+            {
+                loadingIndicator.visibility = View.INVISIBLE
+                searchErrorTV.visibility = View.VISIBLE
+            }
+        )
+
+        loadingIndicator.visibility = View.VISIBLE
+        searchResultsListRV.visibility = View.INVISIBLE
+        searchErrorTV.visibility = View.INVISIBLE
+        requestQueue.add(req)
     }
 
+    private data class MovieSearchResults(
+        val results: List<Movie>
+    )
 }
