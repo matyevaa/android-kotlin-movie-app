@@ -8,4 +8,5 @@
     <string name="search_error">Unable to fetch search results.  Please check your internet connection and try again.</string>
     <string name="image_description">Movie Poster</string>
     <string name="movie_description">Movie Poster</string>
+    <string name="library_button">TODO</string>
 </resources>
