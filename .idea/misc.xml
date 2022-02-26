@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_discover_black_24dp.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/ic_library_black_24dp.xml" value="0.1365" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2132725430597771" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.30344202898550726" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.11752786220871327" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.11752786220871327" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.11752786220871327" />
