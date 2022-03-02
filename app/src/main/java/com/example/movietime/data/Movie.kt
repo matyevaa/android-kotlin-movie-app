@@ -1,9 +1,15 @@
 package com.example.movietime.data
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 data class Movie(
     //val budget: Int?,
     //val genres: Int,
-    //val id: Int,
+
+    @PrimaryKey
+    val id: Int, //
+
     //val runtime: Int, // int or null
     //val backdrop_path: String, // string or null
     //val poster_path: String, // string or null*/
