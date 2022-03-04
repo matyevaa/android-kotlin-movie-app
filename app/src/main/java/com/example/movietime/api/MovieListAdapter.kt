@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.movietime.R
+import com.bumptech.glide.Glide
+import com.example.movietime.data.API_Const
 
 object MovieConst {
     const val list_item = 1
@@ -42,10 +44,14 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
             MovieConst.tile_item -> itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.movie_tile_item, parent, false)
         }
+
         return MovieViewHolder(itemView, vType)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        Glide.with(holder.itemView)
+            .load(API_Const.img_base_url+movieList[position].poster_path)
+            .into(holder.itemView.findViewById(R.id.iv_poster))
         holder.bind(movieList[position])
     }
 
