@@ -40,9 +40,9 @@ class LibraryFragment : Fragment() {
 
 
         setView(root)
-        movieAdapter.updateMovieList(listOf(Movie("","","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("","","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("","","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek")))
+        movieAdapter.updateMovieList(listOf(Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
+            Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
+            Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek")))
 
         fab.setOnClickListener { setView(root) }
 
