@@ -38,11 +38,12 @@ class LibraryFragment : Fragment() {
         searchResultsListRV = root.findViewById(R.id.rv_library_list)
         fab = root.findViewById(R.id.ab_sort)
 
-
         setView(root)
-        movieAdapter.updateMovieList(listOf(Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek")))
+        movieAdapter.updateMovieList(listOf(
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+        ))
 
         fab.setOnClickListener { setView(root) }
 

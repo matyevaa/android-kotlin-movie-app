@@ -59,5 +59,6 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.4.1'
     implementation 'androidx.room:room-ktx:2.4.1'
     ksp 'androidx.room:room-compiler:2.4.1'
+    implementation 'com.google.code.gson:gson:2.9.0'
 
 }
