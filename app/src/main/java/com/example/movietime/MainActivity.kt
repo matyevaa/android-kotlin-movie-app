@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val movieAdapter = MovieListAdapter()
     private lateinit var searchResultsListRV: RecyclerView
+    private lateinit var popularResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
     private lateinit var loadingIndicator: CircularProgressIndicator
 
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         requestQueue = Volley.newRequestQueue(this)
 
         val searchBoxET: EditText = findViewById(R.id.et_search_box)
-        var searchBtn: Button = findViewById(R.id.btn_search)
+        val searchBtn: Button = findViewById(R.id.btn_search)
 
         searchErrorTV = findViewById(R.id.tv_search_error)
         loadingIndicator = findViewById(R.id.loading_indicator)
@@ -62,6 +63,12 @@ class MainActivity : AppCompatActivity() {
 
         searchResultsListRV.adapter = movieAdapter
 
+        popularResultsListRV = findViewById(R.id.rv_popular_results)
+        popularResultsListRV.layoutManager = LinearLayoutManager(this)
+        popularResultsListRV.setHasFixedSize(true)
+
+        popularResultsListRV.adapter = movieAdapter
+
         searchBtn.setOnClickListener {
             val query = searchBoxET.text.toString()
             if(!TextUtils.isEmpty(query)) {
@@ -69,6 +76,8 @@ class MainActivity : AppCompatActivity() {
                 searchResultsListRV.scrollToPosition(0)
             }
         }
+
+        popularMovies()
 
         val navView: BottomNavigationView = binding.navView
 
@@ -98,21 +107,49 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun doMovieSearch(q: String) {
+    private fun popularMovies() {
+        Log.d("popularMovies", "discover popular movies" )
+        val url = "$apiBaseUrl/movie/popular?api_key=$apiKey&page=1"
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+        val jsonAdapter: JsonAdapter<MovieResults> =
+            moshi.adapter(MovieResults::class.java)
+
+        val req = StringRequest(
+            Request.Method.GET,
+            url,
+            {
+                Log.d("popular results", it)
+                val results = jsonAdapter.fromJson(it)
+                Log.d("movie popular result", results.toString())
+                movieAdapter.updateMovieList(results?.results)
+                //loadingIndicator.visibility = View.INVISIBLE
+                popularResultsListRV.visibility = View.VISIBLE
+            },
+            {
+                //loadingIndicator.visibility = View.INVISIBLE
+                //searchErrorTV.visibility = View.VISIBLE
+            }
+        )
+        requestQueue.add(req)
+    }
+
+    private fun doMovieSearch(q: String) {
         Log.d("movies search function", q)
         val url = "$apiBaseUrl/search/movie?api_key=$apiKey&query=$q&page=1"
         val moshi = Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .build()
-        val jsonAdapter: JsonAdapter<MovieSearchResults> =
-            moshi.adapter(MovieSearchResults::class.java)
+        val jsonAdapter: JsonAdapter<MovieResults> =
+            moshi.adapter(MovieResults::class.java)
 
         val req = StringRequest(
             Request.Method.GET,
             url,
             {
                 Log.d("results", it)
-                var results = jsonAdapter.fromJson(it)
+                val results = jsonAdapter.fromJson(it)
                 Log.d("movie result", results.toString())
                 movieAdapter.updateMovieList(results?.results)
                 loadingIndicator.visibility = View.INVISIBLE
@@ -130,7 +167,7 @@ class MainActivity : AppCompatActivity() {
         requestQueue.add(req)
     }
 
-    private data class MovieSearchResults(
+    private data class MovieResults(
         val results: List<Movie>
     )
 }
