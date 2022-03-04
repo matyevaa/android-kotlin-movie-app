@@ -3,6 +3,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import java.io.Serializable
 
 object API_Const {
     const val img_base_url = "https://image.tmdb.org/t/p/original/"
@@ -29,7 +30,7 @@ data class Movie(
     @Transient val budget: Int? = -1,
     @Transient val status: String? = "",
     @Transient val runtime: Int? = -1,
-){ // required for database
+) : Serializable { // required for database
     constructor(id: Int, title: String, original_title: String, overview: String,
                 popularity: Double, release_date: String?, poster_path: String?,
                 backdrop_path: String?, genre_ids: List<Int>) :

@@ -6,6 +6,7 @@ import com.example.movietime.data.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.movietime.R
 import com.bumptech.glide.Glide
@@ -16,7 +17,7 @@ object MovieConst {
     const val tile_item = 2
 }
 
-class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
+class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
     private val tag = "MovieListAdapter"
     private var vType = MovieConst.list_item
     var movieList = listOf<Movie>()
@@ -45,7 +46,7 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
                 .inflate(R.layout.movie_tile_item, parent, false)
         }
 
-        return MovieViewHolder(itemView, vType)
+        return MovieViewHolder(itemView, vType, onMovieClick)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
@@ -55,16 +56,25 @@ class MovieListAdapter : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(
         holder.bind(movieList[position])
     }
 
-    class MovieViewHolder(itemView: View, vType: Int) : RecyclerView.ViewHolder(itemView) {
+    class MovieViewHolder(itemView: View, vType: Int, val onMovieClick: (Movie) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tv_title)
         private val overview: TextView? = itemView.findViewById(R.id.tv_overview)
         private val release_date: TextView = itemView.findViewById(R.id.tv_release_date)
         private val popularity: TextView? = itemView.findViewById(R.id.tv_popularity)
+        private val poster: ImageView = itemView.findViewById((R.id.iv_poster))
         private val vType:Int by lazy { vType }
+        private var currentMovie: Movie? = null
+
+        init {
+            itemView.setOnClickListener {
+                currentMovie?.let(onMovieClick)
+            }
+        }
 
         fun bind(movie: Movie) {
+            currentMovie = movie
             when (vType) {
-                MovieConst.list_item -> {
+               MovieConst.list_item -> {
                     title.text = movie.title
                     release_date.text = movie.release_date
                     overview!!.text = movie.overview

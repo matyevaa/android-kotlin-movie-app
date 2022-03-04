@@ -1,5 +1,6 @@
 package com.example.movietime
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -23,6 +24,8 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.movietime.data.Movie
 import com.example.movietime.databinding.ActivityMainBinding
+import com.example.movietime.ui.detail.EXTRA_MOVIE
+import com.example.movietime.ui.detail.MovieDetailFragment
 import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.squareup.moshi.JsonAdapter
@@ -36,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var requestQueue: RequestQueue
     private lateinit var binding: ActivityMainBinding
-    private val movieAdapter = MovieListAdapter()
+    private val movieAdapter = MovieListAdapter(::onMovieClick)
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var popularResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
@@ -160,14 +163,22 @@ class MainActivity : AppCompatActivity() {
                 searchErrorTV.visibility = View.VISIBLE
             }
         )
-
         loadingIndicator.visibility = View.VISIBLE
         searchResultsListRV.visibility = View.INVISIBLE
         searchErrorTV.visibility = View.INVISIBLE
         requestQueue.add(req)
     }
 
+    private fun onMovieClick(movie: Movie) {
+        Log.d("click", "clicked")
+        val intent = Intent(this, MovieDetailFragment::class.java).apply {
+            putExtra(EXTRA_MOVIE, movie)
+        } // create intent, name the class of the activity
+        startActivity(intent) // start the activity
+    }
+
     private data class MovieResults(
         val results: List<Movie>
     )
+
 }
