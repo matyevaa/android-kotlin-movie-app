@@ -20,9 +20,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class LibraryFragment : Fragment() {
-/*
+
     private var _binding: FragmentLibraryBinding? = null
-    private val movieAdapter = MovieListAdapter(::onMovieClick)
+    private val movieAdapter = MovieListAdapter()
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var fab: FloatingActionButton
     private var isList:Boolean = true
@@ -74,11 +74,10 @@ class LibraryFragment : Fragment() {
         _binding = null
     }
 
-    private fun onMovieClick(movie: Movie) {
-        val intent = Intent(this, MovieDetailFragment::class.java).apply {
-            putExtra(EXTRA_MOVIE, movie)
-        } // create intent, name the class of the activity
-        startActivity(intent) // start the activity
-    }
-*/
+//    private fun onMovieClick(movie: Movie) {
+//        val intent = Intent(this, MovieDetailFragment::class.java).apply {
+//            putExtra(EXTRA_MOVIE, movie)
+//        } // create intent, name the class of the activity
+//        startActivity(intent) // start the activity
+//    }
 }

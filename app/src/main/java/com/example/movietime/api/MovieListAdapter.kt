@@ -17,7 +17,7 @@ object MovieConst {
     const val tile_item = 2
 }
 
-class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
+class MovieListAdapter() : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
     private val tag = "MovieListAdapter"
     private var vType = MovieConst.list_item
     var movieList = listOf<Movie>()
@@ -46,7 +46,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView
                 .inflate(R.layout.movie_tile_item, parent, false)
         }
 
-        return MovieViewHolder(itemView, vType, onMovieClick)
+        return MovieViewHolder(itemView, vType)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
@@ -56,7 +56,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView
         holder.bind(movieList[position])
     }
 
-    class MovieViewHolder(itemView: View, vType: Int, val onMovieClick: (Movie) -> Unit) : RecyclerView.ViewHolder(itemView) {
+    class MovieViewHolder(itemView: View, vType: Int) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tv_title)
         private val overview: TextView? = itemView.findViewById(R.id.tv_overview)
         private val release_date: TextView = itemView.findViewById(R.id.tv_release_date)
@@ -67,7 +67,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView
 
         init {
             itemView.setOnClickListener {
-                currentMovie?.let(onMovieClick)
+                //currentMovie?.let(onMovieClick)
             }
         }
 

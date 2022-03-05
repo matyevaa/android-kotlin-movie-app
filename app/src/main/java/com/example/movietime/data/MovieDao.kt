@@ -8,9 +8,9 @@ import androidx.room.Insert
 @Dao
 interface MovieDao {
     @Insert
-    suspend fun insert(repo: Movie)
+    suspend fun insert(repo: DetailedMovie)
     @Delete
-    suspend fun delete(repo: Movie){
+    suspend fun delete(repo: DetailedMovie){
 
     }
 }
