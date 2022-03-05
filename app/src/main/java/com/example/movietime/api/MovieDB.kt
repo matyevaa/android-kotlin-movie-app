@@ -29,6 +29,7 @@ class MovieDB(context: Context) {
 
 
     fun doMovieSearch(q: String, movieAdapter: MovieListAdapter) {
+        //TODO refactoring kind broke these, maybe pass int View
 //        val loadingIndicator = view.findViewById(R.id.loading_indicator)
 //        val searchResultsListRV = findViewById(R.id.rv_search_results)
 //        val searchErrorTV = findViewById(R.id.tv_search_error)
