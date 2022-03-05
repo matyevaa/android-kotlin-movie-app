@@ -13,12 +13,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.movietime.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +33,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
+        appBarConfig = AppBarConfiguration(
             setOf(
                 R.id.navigation_discover, R.id.navigation_library, R.id.navigation_calendar
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfig)
         navView.setupWithNavController(navController)
     }
 
@@ -44,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.top_main_menu, menu)
         return true
     }
+
+    //TODO up button doesn't work rn
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = findNavController(R.id.navigation_library)
+//        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

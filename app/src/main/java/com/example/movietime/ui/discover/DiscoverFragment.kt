@@ -2,6 +2,7 @@ package com.example.movietime.ui.discover
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,25 +10,20 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.R
 import com.example.movietime.api.MovieDB
-import com.example.movietime.databinding.ActivityMainBinding
+import com.example.movietime.data.Movie
 import com.example.movietime.databinding.FragmentDiscoverBinding
 import com.example.movietime.ui.home.MovieListAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class DiscoverFragment : Fragment() {
 
     private var _binding: FragmentDiscoverBinding? = null
-    private val movieAdapter = MovieListAdapter()
+    private val movieAdapter = MovieListAdapter(::onMovieItemClick)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -63,16 +59,18 @@ class DiscoverFragment : Fragment() {
             val query = searchBoxET.text.toString()
             if(!TextUtils.isEmpty(query)) {
                 api.doMovieSearch(query, movieAdapter)
-                movieAdapter.updateMovieList(api.searchResults.value)
-                //doMovieSearch(query)
                 searchResultsListRV.scrollToPosition(0)
             }
         }
 
-        //popularMovies()
         api.popularMovies(movieAdapter)
 
         return root
+    }
+
+    private fun onMovieItemClick(movie: Movie) {
+        val directions = DiscoverFragmentDirections.navDetail(movie)
+        findNavController().navigate(directions)
     }
 
     override fun onDestroyView() {
