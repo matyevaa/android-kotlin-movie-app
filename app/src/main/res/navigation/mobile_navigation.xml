@@ -9,7 +9,11 @@
         android:id="@+id/navigation_discover"
         android:name="com.example.movietime.ui.discover.DiscoverFragment"
         android:label="@string/title_discover"
-        tools:layout="@layout/fragment_discover" />
+        tools:layout="@layout/fragment_discover">
+        <action
+            android:id="@+id/nav_detail"
+            app:destination="@id/movie_detail"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_library"
@@ -22,4 +26,14 @@
         android:name="com.example.movietime.ui.calendar.CalendarFragment"
         android:label="@string/title_calendar"
         tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/movie_detail"
+        android:name="com.example.movietime.ui.detail.MovieDetailFragment"
+        android:label="Movie">
+        <argument
+            android:name="movie"
+            app:argType="com.example.movietime.data.Movie"
+            />
+    </fragment>
 </navigation>

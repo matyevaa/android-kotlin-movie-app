@@ -1,16 +1,20 @@
 package com.example.movietime.ui.library
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.R
 import com.example.movietime.data.Movie
 import com.example.movietime.databinding.FragmentLibraryBinding
+import com.example.movietime.ui.discover.DiscoverFragment
 import com.example.movietime.ui.home.MovieConst
 import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class LibraryFragment : Fragment() {
 
     private var _binding: FragmentLibraryBinding? = null
-    private val movieAdapter = MovieListAdapter()
+    private val movieAdapter = MovieListAdapter(::onMovieItemClick)
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var fab: FloatingActionButton
     private var isList:Boolean = true
@@ -65,10 +69,15 @@ class LibraryFragment : Fragment() {
         searchResultsListRV.adapter = movieAdapter
     }
 
+    private fun onMovieItemClick(movie: Movie) {
+        Log.d("", "CLICKED")
+//        val directions = DiscoverFragmentDirections.navDetail(movie)
+//        findNavController().navigate(directions)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }
