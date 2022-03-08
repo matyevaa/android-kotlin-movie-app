@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.R
 import com.example.movietime.data.Movie
 import com.example.movietime.databinding.FragmentLibraryBinding
-import com.example.movietime.ui.discover.DiscoverFragmentDirections
+import com.example.movietime.ui.discover.DiscoverFragment
 import com.example.movietime.ui.home.MovieConst
 import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
