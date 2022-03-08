@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.movietime.R
@@ -13,13 +15,20 @@ import com.example.movietime.api.MovieDB
 import com.example.movietime.data.API_Const
 import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.FragmentDetailedBinding
+import com.example.movietime.ui.calendar.CalendarViewModel
+import com.example.movietime.ui.home.MovieListAdapter
+import com.example.movietime.ui.library.LibraryViewModel
 
 
 
 class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     private var _binding: FragmentDetailedBinding? = null
     private val args:MovieDetailFragmentArgs by navArgs()
+
     private var movie = MutableLiveData<DetailedMovie?>(null)
+
+    private var isBookmarked = false
+    private val viewModel:LibraryViewModel by viewModels()
 
     private val binding get() = _binding!!
 
@@ -64,3 +73,16 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     }
 
 }
+//Taesoo: I need this just to check whether the data will be saved into DB or not
+//    private fun toggleRepoBookmark(menuItem: MenuItem) {
+//
+//        isBookmarked = !isBookmarked
+//        when (isBookmarked) {
+//            true -> {
+//                viewModel.addBookmarkedMovie(args.movie)
+//            }
+//            false -> {
+//                viewModel.removeBookmarkedMovie(args.movie)
+//            }
+//        }
+//    }
