@@ -12,5 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+      <!--  <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverFLow</item>-->
     </style>
+
+ <!--   <style name="MyActionButtonOverFLow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_action_account</item>
+        <item name="background">?android:attr/actionBarItemBackground</item>
+        <item name="contentDescription">"Lala"</item>
+    </style>
+-->
 </resources>

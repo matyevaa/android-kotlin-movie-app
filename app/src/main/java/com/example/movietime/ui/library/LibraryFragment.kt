@@ -1,16 +1,20 @@
 package com.example.movietime.ui.library
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.R
 import com.example.movietime.data.Movie
 import com.example.movietime.databinding.FragmentLibraryBinding
+import com.example.movietime.ui.discover.DiscoverFragment
 import com.example.movietime.ui.home.MovieConst
 import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,7 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class LibraryFragment : Fragment() {
 
     private var _binding: FragmentLibraryBinding? = null
-    private val movieAdapter = MovieListAdapter()
+    private val movieAdapter = MovieListAdapter(::onMovieItemClick)
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var fab: FloatingActionButton
     private var isList:Boolean = true
@@ -38,11 +42,12 @@ class LibraryFragment : Fragment() {
         searchResultsListRV = root.findViewById(R.id.rv_library_list)
         fab = root.findViewById(R.id.ab_sort)
 
-
         setView(root)
-        movieAdapter.updateMovieList(listOf(Movie("Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek"),
-            Movie("Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",93.0,"2000","Shrek")))
+        movieAdapter.updateMovieList(listOf(
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+            Movie(123,"Shrek","Shrek","Shrek is an anti-social and highly-territorial green ogre who loves the solitude of his swamp. His life is interrupted after the dwarfish Lord Farquaad of Duloc unknowingly exiles a vast number of fairy-tale creatures to Shrek's swamp.",87.2,"2000","/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg","",listOf<Int>(1,2,3)),
+        ))
 
         fab.setOnClickListener { setView(root) }
 
@@ -64,10 +69,15 @@ class LibraryFragment : Fragment() {
         searchResultsListRV.adapter = movieAdapter
     }
 
+    private fun onMovieItemClick(movie: Movie) {
+        Log.d("", "CLICKED")
+//        val directions = DiscoverFragmentDirections.navDetail(movie)
+//        findNavController().navigate(directions)
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

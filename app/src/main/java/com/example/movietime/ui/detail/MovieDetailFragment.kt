@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -25,14 +24,12 @@ import com.example.movietime.ui.library.LibraryViewModel
 
 
 class MovieDetailFragment : Fragment(R.layout.fragment_activity_movie_detail) {
+    private var _binding: FragmentDetailedBinding? = null
+    private val args:MovieDetailFragmentArgs by navArgs()
     //TAESOO:flag for bookmark
     private var isBookmarked = false
     //TAESOO:viewModel for
     private val viewModel:LibraryViewModel by viewModels()
-
-    private var _binding: FragmentDetailedBinding? = null
-
-    private val args:MovieDetailFragmentArgs by navArgs()
 
     private val binding get() = _binding!!
 
@@ -61,8 +58,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_activity_movie_detail) {
         _binding = null
     }
 
-
-    //Taesoo: I need this just to check whether the data will be saved into DB or not
+}
+//Taesoo: I need this just to check whether the data will be saved into DB or not
 //    private fun toggleRepoBookmark(menuItem: MenuItem) {
 //
 //        isBookmarked = !isBookmarked
@@ -75,5 +72,3 @@ class MovieDetailFragment : Fragment(R.layout.fragment_activity_movie_detail) {
 //            }
 //        }
 //    }
-
-}
