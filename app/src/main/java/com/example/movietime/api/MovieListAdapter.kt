@@ -17,7 +17,8 @@ object MovieConst {
     const val tile_item = 2
 }
 
-class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
+class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
+    : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
     private val tag = "MovieListAdapter"
     private var vType = MovieConst.list_item
     var movieList = listOf<Movie>()
@@ -45,7 +46,6 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit) : RecyclerView
             MovieConst.tile_item -> itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.movie_tile_item, parent, false)
         }
-
         return MovieViewHolder(itemView, vType, onMovieClick)
     }
 

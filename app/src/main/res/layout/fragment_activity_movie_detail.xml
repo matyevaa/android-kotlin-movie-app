@@ -8,6 +8,15 @@
     android:orientation="vertical"
     tools:context=".ui.discover.DiscoverFragment">
 
+    <ImageView
+        android:id="@+id/iv_poster"
+        android:layout_width="112dp"
+        android:layout_height="171dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/movie_description" />
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -31,6 +40,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:text="1977" />
+
+    <TextView
+        android:id="@+id/tv_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        tools:text="82%" />
 
     <TextView
         android:id="@+id/tv_popularity"
@@ -67,13 +83,5 @@
         android:autoSizeTextType="uniform"
         tools:text="Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire."
         />
-    <ImageView
-        android:id="@+id/iv_poster"
-        android:layout_width="112dp"
-        android:layout_height="171dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/movie_description" />
 
 </LinearLayout>
