@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MovieDao {
 
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(repo: DetailedMovie)
     @Delete
