@@ -1,50 +1,61 @@
 package com.example.movietime.ui.detail
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.movietime.R
+import com.example.movietime.api.MovieDB
 import com.example.movietime.data.API_Const
-import com.example.movietime.data.Movie
-import com.example.movietime.databinding.FragmentCalendarBinding
+import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.FragmentDetailedBinding
-import com.example.movietime.ui.calendar.CalendarViewModel
-import com.example.movietime.ui.home.MovieListAdapter
 
 
-class MovieDetailFragment : Fragment(R.layout.fragment_activity_movie_detail) {
+
+class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     private var _binding: FragmentDetailedBinding? = null
     private val args:MovieDetailFragmentArgs by navArgs()
+    private var movie = MutableLiveData<DetailedMovie?>(null)
 
     private val binding get() = _binding!!
+
+    fun updateMovie(newMovie: DetailedMovie?) {
+        movie.value = newMovie!!
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        view.findViewById<TextView>(R.id.tv_title).text = args.movie.title
-        view.findViewById<TextView>(R.id.tv_overview).text = args.movie.overview
-        view.findViewById<TextView>(R.id.tv_release_date).text = args.movie.release_date
-        view.findViewById<TextView>(R.id.tv_popularity).text = args.movie.popularity.toString()
-        view.findViewById<TextView>(R.id.tv_genre).text = args.movie.genre_ids.toString()
+        val api = MovieDB(requireContext())
+        api.getMovie(args.movie.id.toString(), this)
 
+        movie.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                updateView(view) 
+            }
+        })
 
-        Log.d("MovieDetailedFragment", "args.movie: ${args.movie}")
-        Log.d("MovieDetailedFragmentTitle", "args.movie: ${args.movie.title}")
-        Log.d("MovieDetailedFragmentGen", "args.movie: ${args.movie.genre_ids}")
-        Log.d("MovieDetailedFragmentDescr", "args.movie: ${args.movie.overview}")
-        Log.d("MovieDetailedFragmentRelease", "args.movie: ${args.movie.release_date}")
-        Log.d("MovieDetailedFragmentPopularity", "args.movie: ${args.movie.popularity}")
+    }
+    
+    private fun updateView(view: View){
+        view.findViewById<TextView>(R.id.tv_title_detail).text = movie.value?.title
+        view.findViewById<TextView>(R.id.tv_overview_detail).text = movie.value?.overview
+        view.findViewById<TextView>(R.id.tv_release_date_detail).text = movie.value?.release_date
+        view.findViewById<TextView>(R.id.tv_popularity_detail).text = movie.value?.popularity.toString()
+        view.findViewById<TextView>(R.id.tv_budget).text = movie.value?.budget.toString()
+        view.findViewById<TextView>(R.id.tv_status).text = movie.value?.status
+        view.findViewById<TextView>(R.id.tv_runtime).text = movie.value?.runtime.toString()
+        view.findViewById<TextView>(R.id.tv_genre_detail).text = "TODO"
 
+        Glide.with(view)
+            .load(API_Const.img_base_url+movie.value?.poster_path)
+            .into(view.findViewById(R.id.iv_poster_detail))
     }
 
     override fun onDestroyView() {

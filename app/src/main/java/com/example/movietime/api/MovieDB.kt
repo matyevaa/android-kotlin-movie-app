@@ -11,7 +11,9 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.movietime.MainActivity
 import com.example.movietime.R
+import com.example.movietime.data.DetailedMovie
 import com.example.movietime.data.Movie
+import com.example.movietime.ui.detail.MovieDetailFragment
 import com.example.movietime.ui.home.MovieListAdapter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
@@ -92,7 +94,33 @@ class MovieDB(context: Context) {
         requestQueue.add(req)
     }
 
+    fun getMovie(q: String, movieDetailFragment: MovieDetailFragment){
+        var movie: DetailedMovie? = null
+        Log.d("Lookup up: ", q)
+        val url = "$apiBaseUrl/movie/$q?api_key=$apiKey"
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+        val jsonAdapter: JsonAdapter<DetailedMovie> =
+            moshi.adapter(DetailedMovie::class.java)
+
+        val req = StringRequest(
+            Request.Method.GET,
+            url,
+            {
+                val results = jsonAdapter.fromJson(it)
+                movie = results
+                Log.d("results", movie.toString())
+                movieDetailFragment.updateMovie(results)
+            },
+            {
+            }
+        )
+        requestQueue.add(req)
+    }
+
     private data class MovieResults(
         val results: List<Movie>
     )
+
 }

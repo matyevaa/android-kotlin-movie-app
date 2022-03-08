@@ -15,8 +15,8 @@ data class DetailedMovie(
     val release_date: String?,
     val poster_path: String?,
     val backdrop_path: String?,
-    val genre_ids: List<Int>,
-    val budget: Int? = -1,
-    val status: String? = "",
-    val runtime: Int? = -1,
+   // val genre_ids: List<Int>,
+    val budget: Int?,
+    val status: String?,
+    val runtime: Int?,
 ) : Serializable
