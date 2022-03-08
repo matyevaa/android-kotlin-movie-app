@@ -12,11 +12,13 @@ import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.movietime.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,11 +49,10 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    //TODO up button doesn't work rn
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.navigation_library)
-//        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
-//    }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.navigation_library)
+        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

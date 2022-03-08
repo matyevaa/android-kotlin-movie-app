@@ -61,7 +61,6 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
         private val overview: TextView? = itemView.findViewById(R.id.tv_overview)
         private val release_date: TextView = itemView.findViewById(R.id.tv_release_date)
         private val popularity: TextView? = itemView.findViewById(R.id.tv_popularity)
-        private val poster: ImageView = itemView.findViewById((R.id.iv_poster))
         private val vType:Int by lazy { vType }
         private var currentMovie: Movie? = null
 
