@@ -1,23 +1,20 @@
 package com.example.movietime.ui.detail
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.movietime.R
 import com.example.movietime.api.MovieDB
 import com.example.movietime.data.API_Const
 import com.example.movietime.data.DetailedMovie
+import com.example.movietime.data.date
 import com.example.movietime.databinding.FragmentDetailedBinding
 import com.example.movietime.ui.BookmarkedMovieViewModel
-import com.example.movietime.ui.calendar.CalendarViewModel
-import com.example.movietime.ui.home.MovieListAdapter
 import com.example.movietime.ui.library.LibraryViewModel
 
 
@@ -46,24 +43,24 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         val api = MovieDB(requireContext())
         api.getMovie(args.movie.id.toString(), this)
 
-        movie.observe(viewLifecycleOwner, Observer {
-            if(it != null){
+        movie.observe(viewLifecycleOwner,) {
+            if (it != null) {
                 updateView(view)
-               // dbModel.addDetailedMovie(movie.value!!)// Used for quickly loading mock data ot DB
+                //dbModel.addDetailedMovie(movie.value!!)// Used for quickly loading mock data ot DB
             }
-        })
-
+        }
     }
     
     private fun updateView(view: View){
         view.findViewById<TextView>(R.id.tv_title_detail).text = movie.value?.title
         view.findViewById<TextView>(R.id.tv_overview_detail).text = movie.value?.overview
-        view.findViewById<TextView>(R.id.tv_release_date_detail).text = movie.value?.release_date
-        view.findViewById<TextView>(R.id.tv_popularity_detail).text = movie.value?.popularity.toString()
-        view.findViewById<TextView>(R.id.tv_budget).text = movie.value?.budget.toString()
+        view.findViewById<TextView>(R.id.tv_release_year).text = getString(R.string.date_year_format, movie.value?.date())
+        view.findViewById<TextView>(R.id.tv_avg_rating_detail).text = movie.value?.vote_average.toString()
+        view.findViewById<TextView>(R.id.tv_budget).text = getString(R.string.budget_format, movie.value?.budget)
         view.findViewById<TextView>(R.id.tv_status).text = movie.value?.status
-        view.findViewById<TextView>(R.id.tv_runtime).text = movie.value?.runtime.toString()
+        view.findViewById<TextView>(R.id.tv_runtime).text = getString(R.string.runtime_format, movie.value?.runtime)
         view.findViewById<TextView>(R.id.tv_genre_detail).text = "TODO"
+        view.findViewById<TextView>(R.id.tv_release_date_detail).text = getString(R.string.date_format, movie.value?.date())
 
         Glide.with(view)
             .load(API_Const.img_base_url+movie.value?.poster_path)
