@@ -39,7 +39,7 @@
             tools:text="Star Wars: A New Hope" />
 
         <TextView
-            android:id="@+id/tv_release_date_detail"
+            android:id="@+id/tv_release_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle1"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle1"
-            tools:text="8_detail%" />
+            tools:text="100" />
 
     </LinearLayout>
 
@@ -68,26 +68,45 @@
         tools:text="Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R_detail-D_detail and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire." />
 
     <TextView
-        android:id="@+id/tv_genre_detail"
+        android:id="@+id/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/genre"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_overview_detail"
-        tools:text="8_detail%" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_overview_detail" />
+
+    <TextView
+        android:id="@+id/runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/runtime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genre" />
 
     <TextView
         android:id="@+id/tv_runtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/runtime"
+        app:layout_constraintStart_toStartOf="@+id/tv_genre_detail"
         app:layout_constraintTop_toBottomOf="@+id/tv_genre_detail"
         tools:text="104 minutes" />
+
+    <TextView
+        android:id="@+id/tv_genre_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@+id/genre"
+        app:layout_constraintTop_toBottomOf="@+id/tv_overview_detail"
+        tools:text="Sci-Fi" />
 
     <TextView
         android:id="@+id/tv_budget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/budget"
+        app:layout_constraintStart_toStartOf="@+id/tv_runtime"
         app:layout_constraintTop_toBottomOf="@+id/tv_runtime"
         tools:text="$13403143" />
 
@@ -95,8 +114,42 @@
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintStart_toStartOf="@+id/tv_budget"
         app:layout_constraintTop_toBottomOf="@+id/tv_budget"
         tools:text="Released" />
+
+    <TextView
+        android:id="@+id/tv_release_date_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/released"
+        app:layout_constraintStart_toStartOf="@+id/tv_status"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status"
+        tools:text="1977" />
+
+    <TextView
+        android:id="@+id/budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/budget"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runtime" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/budget" />
+
+    <TextView
+        android:id="@+id/released"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/released"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

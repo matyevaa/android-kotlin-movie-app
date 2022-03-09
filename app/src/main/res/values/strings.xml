@@ -9,4 +9,9 @@
     <string name="image_description">Movie Poster</string>
     <string name="movie_description">Movie Poster</string>
     <string name="library_button">TODO</string>
+    <string name="genre">Genre</string>
+    <string name="runtime">Runtime</string>
+    <string name="budget">Budget</string>
+    <string name="status">Status</string>
+    <string name="released">Released</string>
 </resources>
