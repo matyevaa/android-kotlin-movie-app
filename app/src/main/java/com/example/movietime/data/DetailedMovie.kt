@@ -33,8 +33,6 @@ fun DetailedMovie.toMovie() = Movie( //TODO maybe just overload movielist adapte
     genre_ids = listOf(1,2,3),
 )
 
-fun List<DetailedMovie>.toMovieList2() = this.toMovieList()
-
 fun List<DetailedMovie>.toMovieList(): MutableList<Movie> {
     val movies =  mutableListOf<Movie>()
     for (i in this.indices) {

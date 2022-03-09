@@ -19,7 +19,11 @@
         android:id="@+id/navigation_library"
         android:name="com.example.movietime.ui.library.LibraryFragment"
         android:label="@string/title_library"
-        tools:layout="@layout/fragment_library" />
+        tools:layout="@layout/fragment_library">
+        <action
+            android:id="@+id/nav_detail"
+            app:destination="@id/movie_detail"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_calendar"

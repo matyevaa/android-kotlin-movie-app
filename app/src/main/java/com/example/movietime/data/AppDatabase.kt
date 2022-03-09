@@ -8,8 +8,8 @@ import androidx.room.TypeConverters
 
 const val DATABASE_NAME = "Movie-db"
 
-@TypeConverters(Converters::class)
-@Database(entities = [DetailedMovie::class],version=1)
+//@TypeConverters(Converters::class)
+@Database(entities = [DetailedMovie::class], version=1, exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun MovieDao(): MovieDao
 
@@ -19,13 +19,13 @@ abstract class AppDatabase:RoomDatabase() {
         fun getInstance(context: Context): AppDatabase{
             return instance ?: synchronized(this){
                 instance ?: buildDatabase(context).also{
-                    instance =it
+                    instance = it
                 }
             }
         }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                .build()
+            Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).build()
     }
 }
+
