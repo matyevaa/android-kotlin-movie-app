@@ -6,4 +6,7 @@ class BookmarkedMovie(
 {
     suspend fun insertMovie(movie: DetailedMovie) = dao.insert(movie)
     suspend fun deleteMovie(movie: DetailedMovie) = dao.delete(movie)
+
+    fun getAllDetailedMovie()=dao.getAllInfo()
+
 }
