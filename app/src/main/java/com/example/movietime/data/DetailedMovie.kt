@@ -20,3 +20,23 @@ data class DetailedMovie(
     val status: String?,
     val runtime: Int?,
 ) : Serializable
+
+fun DetailedMovie.toMovie() = Movie( //TODO maybe just overload movielist adapter instead?
+    id = id,
+    title= title,
+    original_title = original_title,
+    overview = overview,
+    popularity = popularity,
+    release_date = release_date,
+    poster_path = poster_path,
+    backdrop_path = backdrop_path,
+    genre_ids = listOf(1,2,3),
+)
+
+fun List<DetailedMovie>.toMovieList(): MutableList<Movie> {
+    val movies =  mutableListOf<Movie>()
+    for (i in this.indices) {
+        movies.add(this[i].toMovie())
+    }
+    return movies
+}
