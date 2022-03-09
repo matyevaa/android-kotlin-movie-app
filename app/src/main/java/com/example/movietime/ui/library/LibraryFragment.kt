@@ -42,9 +42,6 @@ class LibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Mock DB data
-//        dbModel.addDetailedMovie(DetailedMovie(id=634649, title="Spider-Man: No Way Home", original_title="Spider-Man: No Way Home", overview="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.", popularity=5083.954, release_date="2021-12-15", poster_path="/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", backdrop_path="/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg", budget=200000000, status="Released", runtime=148))
-//        dbModel.addDetailedMovie(DetailedMovie(id=414906, title="The Batman", original_title="The Batman", overview="In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.", popularity=3827.658, release_date="2022-03-01", poster_path="/74xTEgt7R36Fpooo50r9T25onhq.jpg", backdrop_path="/5P8SmMzSNYikXpxil6BYzJ16611.jpg", budget=185000000, status="Released", runtime=176))
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
         searchResultsListRV = root.findViewById(R.id.rv_library_list)
