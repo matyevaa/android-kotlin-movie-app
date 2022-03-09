@@ -1,16 +1,15 @@
 package com.example.movietime.ui.home
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.data.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.movietime.R
 import com.bumptech.glide.Glide
 import com.example.movietime.data.API_Const
+import com.example.movietime.data.date
 
 object MovieConst {
     const val list_item = 1
@@ -60,7 +59,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
         private val title: TextView = itemView.findViewById(R.id.tv_title)
         private val overview: TextView? = itemView.findViewById(R.id.tv_overview)
         private val release_date: TextView = itemView.findViewById(R.id.tv_release_date)
-        private val popularity: TextView? = itemView.findViewById(R.id.tv_popularity)
+        private val rating: TextView? = itemView.findViewById(R.id.tv_avg_rating)
         private val vType:Int by lazy { vType }
         private var currentMovie: Movie? = null
 
@@ -75,9 +74,9 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
             when (vType) {
                MovieConst.list_item -> {
                     title.text = movie.title
-                    release_date.text = movie.release_date
+                    release_date.text = itemView.context.getString(R.string.date_format, movie.date())
                     overview!!.text = movie.overview
-                    popularity!!.text = movie.popularity.toString()
+                    rating!!.text = movie.vote_average.toString()
                 }
                 MovieConst.tile_item ->{
                     title.text = movie.title

@@ -46,7 +46,8 @@
             tools:text="1977" />
 
         <TextView
-            android:id="@+id/tv_popularity_detail"
+            android:id="@+id/tv_avg_rating_detail"
+            app:drawableStartCompat="@drawable/ic_baseline_star_rate_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle1"
