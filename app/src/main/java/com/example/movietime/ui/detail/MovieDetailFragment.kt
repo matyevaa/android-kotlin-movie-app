@@ -15,6 +15,7 @@ import com.example.movietime.api.MovieDB
 import com.example.movietime.data.API_Const
 import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.FragmentDetailedBinding
+import com.example.movietime.ui.BookmarkedMovieViewModel
 import com.example.movietime.ui.calendar.CalendarViewModel
 import com.example.movietime.ui.home.MovieListAdapter
 import com.example.movietime.ui.library.LibraryViewModel
@@ -24,6 +25,7 @@ import com.example.movietime.ui.library.LibraryViewModel
 class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     private var _binding: FragmentDetailedBinding? = null
     private val args:MovieDetailFragmentArgs by navArgs()
+    private val dbModel: BookmarkedMovieViewModel by viewModels()
 
     private var movie = MutableLiveData<DetailedMovie?>(null)
 
@@ -46,7 +48,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
 
         movie.observe(viewLifecycleOwner, Observer {
             if(it != null){
-                updateView(view) 
+                updateView(view)
+               // dbModel.addDetailedMovie(movie.value!!)// Used for quickly loading mock data ot DB
             }
         })
 
