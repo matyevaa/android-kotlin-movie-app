@@ -1,16 +1,11 @@
 package com.example.movietime
 
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,7 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.movietime.databinding.ActivityMainBinding
-import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,17 +25,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfig = AppBarConfiguration(
-            setOf(
-                R.id.navigation_discover, R.id.navigation_library, R.id.navigation_calendar
-            )
-        )
+        val navHostFragment: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        appBarConfig = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfig)
+
+        // Bottom nav bar
+        val navView: BottomNavigationView = binding.navViewBottom
         navView.setupWithNavController(navController)
     }
 
@@ -50,13 +43,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.navigation_library)
+        val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_setting -> {
+            R.id.action_profile -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
                 true
             }
             else -> super.onOptionsItemSelected(item)

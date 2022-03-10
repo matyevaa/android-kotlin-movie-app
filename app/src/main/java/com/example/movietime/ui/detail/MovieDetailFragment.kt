@@ -49,7 +49,6 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
                 updateView(view) 
             }
         })
-
     }
     
     private fun updateView(view: View){
