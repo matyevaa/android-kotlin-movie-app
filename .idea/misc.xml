@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2132725430597771" />
         <entry key="app/src/main/res/layout/fragment_detailed.xml" value="0.41938405797101447" />
         <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.11296296296296296" />
+        <entry key="app/src/main/res/layout/fragment_google_signin.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/movie_list_item.xml" value="0.19858156028368795" />
         <entry key="app/src/main/res/layout/movie_tile_item.xml" value="0.19858156028368795" />
       </map>

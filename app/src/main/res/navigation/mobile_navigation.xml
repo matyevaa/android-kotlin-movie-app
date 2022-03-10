@@ -32,6 +32,11 @@
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
+        android:id="@+id/navigation_sign_in"
+        android:name="com.example.movietime.ui.profile.SignInFragment"
+        tools:layout="@layout/fragment_google_sign_in" />
+
+    <fragment
         android:id="@+id/movie_detail"
         android:name="com.example.movietime.ui.detail.MovieDetailFragment"
         android:label="Movie">
