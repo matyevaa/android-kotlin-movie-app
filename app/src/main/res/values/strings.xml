@@ -10,4 +10,13 @@
     <string name="movie_description">Movie Poster</string>
     <string name="library_button">TODO</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="genre">Genre</string>
+    <string name="runtime">Runtime</string>
+    <string name="budget">Budget</string>
+    <string name="status">Status</string>
+    <string name="released">Released</string>
+    <string name="budget_format">$%,d</string>
+    <string name="runtime_format">%d Minutes</string>
+    <string name="date_year_format">%tY</string>
+    <string name="date_format">%1$tB %1$te, %tY</string>
 </resources>
