@@ -19,4 +19,6 @@
     <string name="runtime_format">%d Minutes</string>
     <string name="date_year_format">%tY</string>
     <string name="date_format">%1$tB %1$te, %tY</string>
+    <string name="server_client_id">787218429014-q3ge3vvkt5dad2uini5aui3hfehkv634.apps.googleusercontent.com</string>
+    <string name="sign_out">Sign out</string>
 </resources>
