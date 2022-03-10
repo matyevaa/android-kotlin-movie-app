@@ -1,26 +1,39 @@
 package com.example.movietime.ui.profile
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.movietime.R
 import com.example.movietime.databinding.FragmentCalendarBinding
+import com.example.movietime.ui.profile.LoginStatus.account
+import com.example.movietime.ui.profile.LoginStatus.isLoggedIn
+import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.OnCompleteListener
 
 
-//findNavController().navigate(R.id.weather_settings)
-// Configure sign-in to request the user's ID, email address, and basic
-// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+// SIGN OUT
+// https://developers.google.com/identity/sign-in/android/disconnect
+
+object LoginStatus {
+    var isLoggedIn = false
+    var account: GoogleSignInAccount? = null
+}
 
 class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
+    private val TAG = "SignInFragment"
 
     private var _binding: FragmentCalendarBinding? = null
     private val binding get() = _binding!!
@@ -38,12 +51,34 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
         mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
         val signInButton: SignInButton = view.findViewById(R.id.sign_in_button)
-        signInButton.setSize(SignInButton.SIZE_STANDARD)
+        val signOutButton: Button = view.findViewById(R.id.sign_out_button)
+        Log.d(TAG, "OnCreate: " + isLoggedIn)
+        if (!isLoggedIn){
+            view.findViewById<TextView>(R.id.tv_welcome).visibility = View.INVISIBLE
+            signOutButton.visibility = View.INVISIBLE
 
-        signInButton.setOnClickListener {
-            Log.d("", "Clicked Sign in")
+            view.findViewById<TextView>(R.id.tv_sign_in).visibility = View.VISIBLE
+            signInButton.visibility = View.VISIBLE
+            signInButton.setSize(SignInButton.SIZE_STANDARD)
+
+            signInButton.setOnClickListener {
+                signIn()
+                Log.d("", "Clicked Sign in")
+            }
+        }else{
+            val welcome = view.findViewById<TextView>(R.id.tv_welcome)
+            welcome.visibility = View.VISIBLE
+            welcome.text = "Hello There, "+ account!!.displayName
+            signOutButton.visibility = View.VISIBLE
+
+            view.findViewById<TextView>(R.id.tv_sign_in).visibility = View.INVISIBLE
+            signInButton.visibility = View.INVISIBLE
+
+            signOutButton.setOnClickListener {
+                signOut()
+                Log.d("", "Clicked Sign out")
+            }
         }
-
     }
 
     private fun signIn() {
@@ -51,37 +86,36 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    private fun signOut() {
+        mGoogleSignInClient.signOut()
+        isLoggedIn = false
+        account = null
+        findNavController().navigateUp()
+    }
+
+    private fun revokeAccess() {
+        mGoogleSignInClient.revokeAccess()
+            .addOnCompleteListener(requireActivity(), OnCompleteListener<Void?> {
+                // remove database entries?
+            })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == RC_SIGN_IN) {
+                try {
+                    val credential = GoogleSignIn.getLastSignedInAccount(requireContext())
+                    isLoggedIn = true
+                    account = credential
+                    Log.d(TAG, credential.toString())
+                    findNavController().navigateUp()
+                } catch (e: ApiException) {
+                    // The ApiException status code indicates the detailed failure reason.
+                    Log.w("TAG", "signInResult:failed code=" + e.statusCode)
+                }
+            }
         }
-    }
-
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-
-            // Signed in successfully, show authenticated UI.
-           // updateUI(account)
-        } catch (e: ApiException) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("TAG", "signInResult:failed code=" + e.statusCode)
-            //updateUI(null)
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val account = GoogleSignIn.getLastSignedInAccount(requireContext())
-        Log.d("", "Account: " + account.toString())
-        // if account == null user not signed in, update UI to show button
     }
 
     override fun onDestroyView() {
