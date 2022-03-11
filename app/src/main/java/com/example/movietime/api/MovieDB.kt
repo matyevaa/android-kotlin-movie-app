@@ -2,17 +2,13 @@ package com.example.movietime.api
 
 import android.content.Context
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.movietime.MainActivity
-import com.example.movietime.R
 import com.example.movietime.data.DetailedMovie
-import com.example.movietime.data.Genre
 import com.example.movietime.data.Movie
 import com.example.movietime.ui.detail.MovieDetailFragment
 import com.example.movietime.ui.home.MovieListAdapter
@@ -95,33 +91,8 @@ class MovieDB(context: Context) {
         requestQueue.add(req)
     }
 
-    fun getGenres(movieDetailFragment: MovieDetailFragment): List<Genre> {
-        Log.d("genres", "discover genres" )
-        val url = "$apiBaseUrl/genre/movie/list?api_key=$apiKey"
-        val moshi = Moshi.Builder()
-            .addLast(KotlinJsonAdapterFactory())
-            .build()
-        val jsonAdapter: JsonAdapter<Genre> =
-            moshi.adapter(Genre::class.java)
-        var gnr = Genre(0,"")
-        val req = StringRequest(
-            Request.Method.GET,
-            url,
-            {
-                Log.d("genre results", it)
-                val results = jsonAdapter.fromJson(it)
-                movieDetailFragment.updateGenre(results)
-                gnr = results!!
-            },
-            {
-            }
-        )
-        requestQueue.add(req)
-        return listOf(gnr)
-    }
-
     fun getMovie(q: String, movieDetailFragment: MovieDetailFragment){
-        var movie: DetailedMovie? = null
+        var movie: DetailedMovie?
         Log.d("Lookup up: ", q)
         val url = "$apiBaseUrl/movie/$q?api_key=$apiKey"
         val moshi = Moshi.Builder()
@@ -136,11 +107,9 @@ class MovieDB(context: Context) {
             {
                 val results = jsonAdapter.fromJson(it)
                 movie = results
-                results?.genre_ids = getGenres(movieDetailFragment)
-                //var gnrs = results?.genre_ids
+//                results?.genre_ids = getGenres(movieDetailFragment)
                 Log.d("results", movie.toString())
-                Log.d("results2", movie?.genre_ids.toString())
-                //Log.d("results3", gnrs.toString())
+                Log.d("results2", movie?.genres.toString())
 
                 movieDetailFragment.updateMovie(results)
             },
