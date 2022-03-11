@@ -46,5 +46,17 @@
             />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.movietime.ui.settings.SettingsFragment"
+        android:label="Settings">
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="com.example.movietime.ui.stats.StatsFragment"
+        android:label="Stats">
+    </fragment>
+
 
 </navigation>
