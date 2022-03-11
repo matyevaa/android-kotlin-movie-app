@@ -95,7 +95,7 @@ class MovieDB(context: Context) {
         requestQueue.add(req)
     }
 
-    fun getGenres(movieDetailFragment: MovieDetailFragment) {
+    fun getGenres(movieDetailFragment: MovieDetailFragment): List<Genre> {
         Log.d("genres", "discover genres" )
         val url = "$apiBaseUrl/genre/movie/list?api_key=$apiKey"
         val moshi = Moshi.Builder()
@@ -103,21 +103,23 @@ class MovieDB(context: Context) {
             .build()
         val jsonAdapter: JsonAdapter<Genre> =
             moshi.adapter(Genre::class.java)
-
+        var gnr = Genre(0,"")
         val req = StringRequest(
             Request.Method.GET,
             url,
             {
                 Log.d("genre results", it)
                 val results = jsonAdapter.fromJson(it)
-                Log.d("genre string result", results.toString())
                 movieDetailFragment.updateGenre(results)
+                gnr = results!!
             },
             {
             }
         )
         requestQueue.add(req)
-}
+        return listOf(gnr)
+    }
+
     fun getMovie(q: String, movieDetailFragment: MovieDetailFragment){
         var movie: DetailedMovie? = null
         Log.d("Lookup up: ", q)
@@ -134,7 +136,12 @@ class MovieDB(context: Context) {
             {
                 val results = jsonAdapter.fromJson(it)
                 movie = results
+                results?.genre_ids = getGenres(movieDetailFragment)
+                //var gnrs = results?.genre_ids
                 Log.d("results", movie.toString())
+                Log.d("results2", movie?.genre_ids.toString())
+                //Log.d("results3", gnrs.toString())
+
                 movieDetailFragment.updateMovie(results)
             },
             {

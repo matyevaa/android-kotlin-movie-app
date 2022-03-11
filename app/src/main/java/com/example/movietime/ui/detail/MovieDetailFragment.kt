@@ -47,7 +47,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         setHasOptionsMenu(true)
 
         val api = MovieDB(requireContext())
-        //api.getGenres(this)
+        api.getGenres(this)
         api.getMovie(args.movie.id.toString(), this)
 
         movie.observe(viewLifecycleOwner,) {

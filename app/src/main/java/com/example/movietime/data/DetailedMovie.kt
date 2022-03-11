@@ -19,7 +19,7 @@ data class DetailedMovie(
     val poster_path: String?,
     val backdrop_path: String?,
     @TypeConverters(GenreConverters::class)
-        val genre_ids: List<Genre>,
+    var genre_ids: List<Genre>,
     val budget: Int?,
     val status: String?,
     val runtime: Int?,
