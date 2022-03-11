@@ -45,4 +45,6 @@
             app:argType="com.example.movietime.data.Movie"
             />
     </fragment>
+
+
 </navigation>
