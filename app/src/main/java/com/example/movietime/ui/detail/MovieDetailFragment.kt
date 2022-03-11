@@ -1,11 +1,9 @@
 package com.example.movietime.ui.detail
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -24,8 +22,6 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     private val dbModel: BookmarkedMovieViewModel by viewModels()
 
     private var movie = MutableLiveData<DetailedMovie?>(null)
-    private var genre = Genre(0, "")
-    //private var genres = List<Genre>(0, null)
 
     private var isBookmarked = false
     private val viewModel:LibraryViewModel by viewModels()
@@ -36,18 +32,11 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         movie.value = newMovie!!
     }
 
-    fun updateGenre(newGenre: Genre?) {
-        genre.id = newGenre!!.id
-        genre.name = newGenre!!.name
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
         val api = MovieDB(requireContext())
-        api.getGenres(this)
         api.getMovie(args.movie.id.toString(), this)
 
         movie.observe(viewLifecycleOwner,) {
@@ -66,7 +55,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         view.findViewById<TextView>(R.id.tv_budget).text = getString(R.string.budget_format, movie.value?.budget)
         view.findViewById<TextView>(R.id.tv_status).text = movie.value?.status
         view.findViewById<TextView>(R.id.tv_runtime).text = getString(R.string.runtime_format, movie.value?.runtime)
-        view.findViewById<TextView>(R.id.tv_genre_detail).text = movie.value?.genre_ids.toString()
+        view.findViewById<TextView>(R.id.tv_genre_detail).text = movie.value?.genres?.toNameList().toString()
         view.findViewById<TextView>(R.id.tv_release_date_detail).text = getString(R.string.date_format, movie.value?.date())
 
         Glide.with(view)

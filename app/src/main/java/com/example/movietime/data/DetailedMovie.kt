@@ -19,7 +19,7 @@ data class DetailedMovie(
     val poster_path: String?,
     val backdrop_path: String?,
     @TypeConverters(GenreConverters::class)
-    var genre_ids: List<Genre>,
+    val genres: List<Genre>,
     val budget: Int?,
     val status: String?,
     val runtime: Int?,
@@ -34,7 +34,7 @@ fun DetailedMovie.toMovie() = Movie(
     release_date = release_date,
     poster_path = poster_path,
     backdrop_path = backdrop_path,
-    //genre_ids = genre_ids,
+    genre_ids = genres.toIDList(),
 )
 
 fun DetailedMovie.date(): Calendar {
