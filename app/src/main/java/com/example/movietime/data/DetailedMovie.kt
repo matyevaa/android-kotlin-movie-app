@@ -2,6 +2,7 @@ package com.example.movietime.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,7 +18,8 @@ data class DetailedMovie(
     val release_date: String?,
     val poster_path: String?,
     val backdrop_path: String?,
-   // val genre_ids: List<Int>,
+    @TypeConverters(GenreConverters::class)
+        val genre_ids: List<Genre>,
     val budget: Int?,
     val status: String?,
     val runtime: Int?,
@@ -32,7 +34,7 @@ fun DetailedMovie.toMovie() = Movie(
     release_date = release_date,
     poster_path = poster_path,
     backdrop_path = backdrop_path,
-    genre_ids = listOf(1, 2, 3),
+    //genre_ids = genre_ids,
 )
 
 fun DetailedMovie.date(): Calendar {

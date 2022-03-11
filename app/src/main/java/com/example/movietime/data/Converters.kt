@@ -5,15 +5,15 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
-class Converters {
+class GenreConverters {
     @TypeConverter
-    fun stringToListOfInts(value: String): List<Int>  {
-        val listType: Type = object : TypeToken<ArrayList<String?>?>() {}.type
+    fun stringToListOfInts(value: String): List<Genre>  {
+        val listType: Type = object : TypeToken<ArrayList<Genre?>?>() {}.type
         return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
-    fun listOfStringsToString(list: List<Int>): String {
+    fun listOfStringsToString(list: List<Genre>): String {
         val gson = Gson()
         return gson.toJson(list)
     }

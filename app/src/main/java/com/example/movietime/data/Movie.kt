@@ -17,7 +17,7 @@ data class Movie(
     val release_date: String?,
     val poster_path: String?,
     val backdrop_path: String?,
-    val genre_ids: List<Int>,
+    //val genre_ids: List<Genre>,
 ) : Serializable
 
 fun Movie.date(): Calendar {
