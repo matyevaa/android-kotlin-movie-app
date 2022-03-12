@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:background="@android:color/transparent"
+    app:cardBackgroundColor="#21FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,14 +19,15 @@
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:autoSizeTextType="uniform"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textColor="@color/white"
+            app:layout_constrainedHeight="true"
             app:layout_constraintEnd_toStartOf="@+id/iv_poster"
+            app:layout_constraintHeight_max="40dp"
             app:layout_constraintRight_toLeftOf="@+id/iv_poster"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHeight_max="40dp"
-            app:layout_constrainedHeight="true"
-            android:autoSizeTextType="uniform"
             tools:text="Star Wars: A New Hope" />
 
         <TextView
@@ -32,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/tv_overview"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -42,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="@color/white"
             app:drawableStartCompat="@drawable/ic_baseline_star_rate_24"
             app:layout_constraintBottom_toTopOf="@+id/tv_overview"
             app:layout_constraintEnd_toStartOf="@+id/iv_poster"
@@ -53,16 +58,16 @@
             android:id="@+id/tv_overview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/white"
+            app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_poster"
+            app:layout_constraintHeight_max="150dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
-            app:layout_constraintHeight_max="150dp"
-            app:layout_constrainedHeight="true"
-            android:autoSizeTextType="uniform"
-            tools:text="Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire."
-            />
+            tools:text="Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire." />
         <!--        TODO adjust post size to not be consts-->
         <ImageView
             android:id="@+id/iv_poster"
