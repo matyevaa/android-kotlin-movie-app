@@ -20,7 +20,7 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
 
-    @Query("SELECT * FROM DetailedMovie WHERE budget = 0")
+    @Query("SELECT * FROM DetailedMovie WHERE release_date = DATE('now','localtime')")
     fun getRecentInfo():Flow<List<DetailedMovie>>
 
     // STATS:
