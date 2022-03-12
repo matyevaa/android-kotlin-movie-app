@@ -20,6 +20,9 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
 
+    @Query("SELECT * FROM DetailedMovie WHERE budget = 0")
+    fun getRecentInfo():Flow<List<DetailedMovie>>
+
     // STATS:
     /*
     Movie with longest runtime

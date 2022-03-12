@@ -67,18 +67,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         super.onDestroyView()
         _binding = null
     }
+    
 
 }
 //Taesoo: I need this just to check whether the data will be saved into DB or not
-//    private fun toggleRepoBookmark(menuItem: MenuItem) {
-//
-//        isBookmarked = !isBookmarked
-//        when (isBookmarked) {
-//            true -> {
-//                viewModel.addBookmarkedMovie(args.movie)
-//            }
-//            false -> {
-//                viewModel.removeBookmarkedMovie(args.movie)
-//            }
-//        }
-//    }
+
