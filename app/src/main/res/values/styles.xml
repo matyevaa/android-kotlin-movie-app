@@ -6,7 +6,17 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">end</item>
     </style>
-
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:weekNumberColor">@color/white</item>
+    </style>
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="FirebaseUI.Button.AccountChooser">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
