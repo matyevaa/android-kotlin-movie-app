@@ -21,12 +21,4 @@
     <string name="date_format">%1$tB %1$te, %tY</string>
     <string name="server_client_id">787218429014-q3ge3vvkt5dad2uini5aui3hfehkv634.apps.googleusercontent.com</string>
     <string name="sign_out">Sign out</string>
-
-    <string name="notification_stars_title"> New stars for %1$s!</string>
-    <string name="notification_stars_text"> The movie %1$s is now upcoming this week!</string>
-    <string name="notification_stars_summary_title"> %1$d repos have new stars!</string>
-
-    <string name="notification_stars_channel" translatable="false">starsNotificationChannel</string>
-    <string name="notification_stars_channel_title">Star count updates</string>
-
 </resources>

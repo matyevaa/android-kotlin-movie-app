@@ -6,6 +6,5 @@ class BookmarkedMovie(private val dao: MovieDao)
     suspend fun deleteMovie(movie: DetailedMovie) = dao.delete(movie)
 
     fun getAllDetailedMovie()=dao.getAllInfo()
-    fun getRecentMovie()=dao.getRecentInfo()
-    fun getRecentMovieOnce()=dao.getRecentInfoOnce()
+
 }

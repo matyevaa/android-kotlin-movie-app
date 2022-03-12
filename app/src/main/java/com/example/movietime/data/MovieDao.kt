@@ -20,12 +20,6 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
 
-    @Query("SELECT * FROM DetailedMovie WHERE release_date >= date() and release_date < date('now', 'weekday 0', '-7 days')")
-    fun getRecentInfo():Flow<List<DetailedMovie>>
-
-    @Query("SELECT * FROM DetailedMovie WHERE release_date >= date() and release_date < date('now', 'weekday 0', '-7 days')")
-    fun getRecentInfoOnce():List<DetailedMovie>
-
     // STATS:
     /*
     Movie with longest runtime

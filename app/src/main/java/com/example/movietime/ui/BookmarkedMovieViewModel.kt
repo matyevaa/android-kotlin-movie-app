@@ -16,7 +16,6 @@ class BookmarkedMovieViewModel(application: Application): AndroidViewModel(appli
     )
 
     val bookmarkedMovies = detailedMovie.getAllDetailedMovie().asLiveData()
-
     fun addDetailedMovie(movie: DetailedMovie){
         viewModelScope.launch {
             detailedMovie.insertMovie(movie)
@@ -29,7 +28,5 @@ class BookmarkedMovieViewModel(application: Application): AndroidViewModel(appli
             detailedMovie.deleteMovie(movie)
         }
     }
-
-    val RecentMovies = detailedMovie.getRecentMovie().asLiveData()
 
 }
