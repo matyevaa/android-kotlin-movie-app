@@ -1,6 +1,5 @@
 package com.example.movietime.ui.detail
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -43,7 +42,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         movie.observe(viewLifecycleOwner,) {
             if (it != null) {
                 updateView(view)
-                dbModel.addDetailedMovie(movie.value!!)// Used for quickly loading mock data ot DB
+                //dbModel.addDetailedMovie(movie.value!!)// Used for quickly loading mock data ot DB
             }
         }
     }
@@ -69,18 +68,17 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         _binding = null
     }
 
+}
+//Taesoo: I need this just to check whether the data will be saved into DB or not
 //    private fun toggleRepoBookmark(menuItem: MenuItem) {
 //
 //        isBookmarked = !isBookmarked
 //        when (isBookmarked) {
 //            true -> {
-//                viewModel.addBookmarkedMovie(movie)
+//                viewModel.addBookmarkedMovie(args.movie)
 //            }
 //            false -> {
 //                viewModel.removeBookmarkedMovie(args.movie)
 //            }
 //        }
 //    }
-}
-
-

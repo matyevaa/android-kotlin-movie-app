@@ -29,11 +29,7 @@
         android:id="@+id/navigation_calendar"
         android:name="com.example.movietime.ui.calendar.CalendarFragment"
         android:label="@string/title_calendar"
-        tools:layout="@layout/fragment_calendar">
-        <action
-            android:id="@+id/nav_detail"
-            app:destination="@id/movie_detail"/>
-    </fragment>
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/navigation_sign_in"
