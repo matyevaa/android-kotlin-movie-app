@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val navHostFragment: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
@@ -58,6 +57,14 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
                 //Feel free to remove this ^ when adding in the profile page, i'll just tack on
                 // a sign out button when done
+                true
+            }
+            R.id.action_setting -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_settings)
+                true
+            }
+            R.id.action_stats -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_stats)
                 true
             }
             else -> super.onOptionsItemSelected(item)
