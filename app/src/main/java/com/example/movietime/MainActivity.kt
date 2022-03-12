@@ -60,6 +60,14 @@ class MainActivity : AppCompatActivity() {
                 // a sign out button when done
                 true
             }
+            R.id.action_setting -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_settings)
+                true
+            }
+            R.id.action_stats -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_stats)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
