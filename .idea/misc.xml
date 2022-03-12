@@ -5,25 +5,24 @@
       <map>
         <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.156" />
         <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/activity_main.xml" value="0.2222222222222222" />
-        <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/fragment_activity_movie_detail.xml" value="0.2140625" />
-        <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/fragment_detailed.xml" value="0.2140625" />
-        <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/fragment_discover.xml" value="0.1" />
         <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/fragment_home.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/ic_baseline_search_24.xml" value="0.10866261398176291" />
-        <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/movie_list_item.xml" value="0.25" />
-        <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/layout/movie_tile_item.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/amaty/github/final-project-final-project-team-4/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3" />
-        <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/drawable-v24/baseline_theaters_24.xml" value="0.177" />
-        <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.177" />
-        <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/drawable/ic_baseline_view_column_24.xml" value="0.177" />
-        <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.177" />
-        <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/layout/notification.xml" value="0.4" />
-        <entry key="app/src/main/res/drawable/fui_ic_googleg_color_24dp.xml" value="0.259" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/drawable-anydpi/ic_action_settings.xml" value="0.1785" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/drawable/ic_discover_black_24dp.xml" value="0.1785" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/activity_main.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/activity_settings.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/activity_stats.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_calendar.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_discover.xml" value="0.14130434782608695" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_google_sign_in.xml" value="0.12545289855072464" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_settings.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_stats.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/menu/top_main_menu.xml" value="0.43107769423558895" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/xml/settings.xml" value="0.14130434782608695" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2132725430597771" />
-        <entry key="app/src/main/res/layout/fragment_detailed.xml" value="0.41938405797101447" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.11296296296296296" />
-        <entry key="app/src/main/res/layout/fragment_google_sign_in.xml" value="0.5430825242718447" />
-        <entry key="app/src/main/res/layout/fragment_google_signin.xml" value="0.13333333333333333" />
       </map>
     </option>
   </component>
