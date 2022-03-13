@@ -100,6 +100,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         super.onDestroyView()
         _binding = null
     }
+    
 
     private fun toggleRepoBookmark(menuItem: MenuItem) {
 
@@ -127,4 +128,4 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
 
 }
 //Taesoo: I need this just to check whether the data will be saved into DB or not
-//
+
