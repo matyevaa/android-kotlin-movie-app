@@ -20,6 +20,9 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
 
+    @Query("SELECT * FROM DetailedMovie WHERE original_title = :name LIMIT 1")
+    fun getRepoByName(name: String): Flow<DetailedMovie?>
+
     // STATS:
     /*
     Movie with longest runtime
