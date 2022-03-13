@@ -47,7 +47,7 @@ interface MovieDao {
 
     //Total runtime of movies watched
     @Query("SELECT SUM(runtime) FROM DetailedMovie")
-    fun getTotalRuntime(): Int?
+    fun getTotalRuntime(): Flow<Int?>
 
     //Most recently released movie seen
     @Query("SELECT * FROM DetailedMovie Order BY release_date desc limit 1")
@@ -55,7 +55,7 @@ interface MovieDao {
 
     //Averages
     @Query("SELECT AVG(runtime) FROM DetailedMovie")
-    fun getAverageRuntime():Int?
+    fun getAverageRuntime():Flow<Int?>
 
     //@Query("SELECT AVG(popularity) FROM DetailedMovie")
     //fun getAveragePopularity():Number?
