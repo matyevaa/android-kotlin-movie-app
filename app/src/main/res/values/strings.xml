@@ -22,4 +22,12 @@
     <string name="server_client_id">787218429014-q3ge3vvkt5dad2uini5aui3hfehkv634.apps.googleusercontent.com</string>
     <string name="sign_out">Sign out</string>
     <string name="action_bookmark">Bookmark this repo</string>
+
+    <string name="notification_stars_title"> Upcoming Movie!</string>
+    <string name="notification_stars_text"> %1$s is now upcoming this week!</string>
+    <string name="notification_stars_summary_title"> %1$d repos have new stars!</string>
+
+    <string name="notification_stars_channel" translatable="false">starsNotificationChannel</string>
+    <string name="notification_stars_channel_title">Star count updates</string>
+    <string name="share_text">Sharing the movie: %1$s average rate of %2$.1f!!</string>
 </resources>

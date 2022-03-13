@@ -19,6 +19,11 @@ class BookmarkedMovieViewModel(application: Application): AndroidViewModel(appli
 
     val RecentMovie = detailedMovie.getRecentMovie().asLiveData()
 
+    fun getRecentMovieOnce(){
+        viewModelScope.launch{
+            getRecentMovieOnce()
+        }
+    }
 
     fun getMovieByName(name: String) = detailedMovie.getMovieByName(name).asLiveData()
 
