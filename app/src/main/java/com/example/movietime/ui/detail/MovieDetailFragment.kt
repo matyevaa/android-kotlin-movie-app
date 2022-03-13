@@ -1,8 +1,12 @@
 package com.example.movietime.ui.detail
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.fragment.app.viewModels
@@ -25,7 +29,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
     private var movie = MutableLiveData<DetailedMovie?>(null)
 
     private var isBookmarked = false
-    private val viewModel:LibraryViewModel by viewModels()
+    private val viewModel:BookmarkedMovieViewModel by viewModels()
 
     private val binding get() = _binding!!
 
@@ -47,7 +51,35 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
             }
         }
     }
-    
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        val bookmarkItem = menu.findItem(R.id.action_bookmark)
+
+
+        viewModel.getMovieByName(args.movie.title).observe(viewLifecycleOwner) { bookmarkedRepo ->
+            when (bookmarkedRepo) {
+                null -> {
+                    Log.d("hi", "NOt in DB")
+                    isBookmarked = false
+                    bookmarkItem.isChecked = false
+                    bookmarkItem.icon = AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_baseline_bookmark_border_24
+                    )
+                }
+                else -> {
+                    Log.d("hi", "in DB")
+                    isBookmarked = true
+                    bookmarkItem.isChecked = true
+                    bookmarkItem.icon = AppCompatResources.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_baseline_bookmark_24
+                    )
+                }
+            }
+        }
+    }
     private fun updateView(view: View){
         view.findViewById<TextView>(R.id.tv_title_detail).text = movie.value?.title
         view.findViewById<TextView>(R.id.tv_overview_detail).text = movie.value?.overview
@@ -74,11 +106,22 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         isBookmarked = !isBookmarked
         when (isBookmarked) {
             true -> {
-                viewModel.addBookmarkedMovie(args.movie)
+                viewModel.addDetailedMovie(movie.value!!)
             }
             false -> {
-                viewModel.removeBookmarkedMovie(args.movie)
+                viewModel.deleteDetailedMovie(movie.value!!)
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+
+            R.id.action_bookmark -> {
+                toggleRepoBookmark(item)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
