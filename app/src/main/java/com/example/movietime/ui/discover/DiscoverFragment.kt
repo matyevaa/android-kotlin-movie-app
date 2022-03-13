@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.R
 import com.example.movietime.api.MovieDB
+import com.example.movietime.data.AppDatabase
+import com.example.movietime.data.BookmarkedMovie
 import com.example.movietime.data.Movie
 import com.example.movietime.databinding.FragmentDiscoverBinding
 import com.example.movietime.ui.home.MovieListAdapter
@@ -77,4 +79,5 @@ class DiscoverFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

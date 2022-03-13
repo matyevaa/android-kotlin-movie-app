@@ -1,4 +1,5 @@
 package com.example.movietime.ui.detail
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -117,7 +118,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
-
+            R.id.action_share -> {
+                shareRepo()
+                true
+            }
             R.id.action_bookmark -> {
                 toggleRepoBookmark(item)
                 true
@@ -126,6 +130,17 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         }
     }
 
+    private fun shareRepo() {
+        val text = getString(R.string.share_text, args.movie.title, args.movie.vote_average)
+        Log.d("Share",text)
+        val intent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(intent, null))
+    }
+
 }
-//Taesoo: I need this just to check whether the data will be saved into DB or not
+
 

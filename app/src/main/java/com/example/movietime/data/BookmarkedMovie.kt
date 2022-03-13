@@ -9,4 +9,5 @@ class BookmarkedMovie(private val dao: MovieDao)
     fun getMovieByName(name: String)=dao.getRepoByName(name)
 
     fun getRecentMovie()=dao.getRecentInfo()
+    suspend fun getRecentMovieOnce()=dao.getRecentInfoOnce()
 }

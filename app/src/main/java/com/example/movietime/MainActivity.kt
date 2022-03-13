@@ -6,12 +6,15 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.ActivityMainBinding
 import com.example.movietime.ui.profile.LoginStatus.account
 import com.example.movietime.ui.profile.LoginStatus.isLoggedIn
@@ -82,4 +85,20 @@ class MainActivity : AppCompatActivity() {
             // ^ Uncomment to try sign on with google
         }
     }
+    private fun sendNotification(movie: DetailedMovie){
+        val builder = NotificationCompat.Builder(
+            applicationContext,
+            applicationContext.getString(R.string.notification_stars_channel))
+        builder.setSmallIcon(R.drawable.baseline_theaters_24)
+            .setContentTitle(applicationContext.getString(R.string.notification_stars_title, movie.original_title))
+            .setContentText(applicationContext.getString(R.string.notification_stars_text, movie.original_title))
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        NotificationManagerCompat.from(applicationContext)
+            .notify(movie.original_title.hashCode(),builder.build())
+
+
+    }
+
+
 }
