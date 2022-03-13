@@ -32,24 +32,32 @@ interface MovieDao {
 
 
     // STATS:
-    /*
-    Movie with longest runtime
-    Select * FROM DetailedMovie WHERE runtime = (SELECT MAX(runtime) FROM DetailedMovie) limit 1
 
-    Movie with highest popularity
-    Select * FROM DetailedMovie WHERE popularity = (SELECT MAX(popularity) FROM DetailedMovie) limit 1
+    //Movie with longest runtime
+    @Query("Select * FROM DetailedMovie WHERE runtime = (SELECT MAX(runtime) FROM DetailedMovie) limit 1")
+    fun getLongestRuntime():Flow<DetailedMovie?>
 
-    Movie with highest budget
-    Select * FROM DetailedMovie WHERE budget = (SELECT MAX(budget) FROM DetailedMovie) limit 1
+    //Movie with highest popularity
+    //@Query("Select * FROM DetailedMovie WHERE popularity = (SELECT MAX(popularity) FROM DetailedMovie) limit 1")
+    //fun getHighestPopularity():Flow<DetailedMovie>
 
-    Total runtime of movies watched
-    SELECT SUM(runtime) FROM DetailedMovie
+    //Movie with highest budget
+    @Query("Select * FROM DetailedMovie WHERE budget = (SELECT MAX(budget) FROM DetailedMovie) limit 1")
+    fun getHighestBudget():Flow<DetailedMovie?>
 
-    Most recently released movie seen
-    SELECT * FROM DetailedMovie Order BY release_date desc limit 1
+    //Total runtime of movies watched
+    @Query("SELECT SUM(runtime) FROM DetailedMovie")
+    fun getTotalRuntime(): Int?
 
-    Averages
-    SELECT AVG(runtime) FROM DetailedMovie
-    SELECT AVG(popularity) FROM DetailedMovie
-     */
+    //Most recently released movie seen
+    @Query("SELECT * FROM DetailedMovie Order BY release_date desc limit 1")
+    fun getMostRecent():Flow<DetailedMovie?>
+
+    //Averages
+    @Query("SELECT AVG(runtime) FROM DetailedMovie")
+    fun getAverageRuntime():Int?
+
+    //@Query("SELECT AVG(popularity) FROM DetailedMovie")
+    //fun getAveragePopularity():Number?
+
 }
