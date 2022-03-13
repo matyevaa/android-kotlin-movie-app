@@ -10,4 +10,10 @@ class BookmarkedMovie(private val dao: MovieDao)
 
     fun getRecentMovie()=dao.getRecentInfo()
     suspend fun getRecentMovieOnce()=dao.getRecentInfoOnce()
+
+    fun getLongestRuntimeMovie()=dao.getLongestRuntime()
+    fun getHighestBudgetMovie()=dao.getHighestBudget()
+    fun getTotalRunTime()=dao.getTotalRuntime()
+    fun getMostRecentlyReleasedMovie()=dao.getMostRecentlyReleased()
+    fun getAvgRunTime()=dao.getAverageRuntime()
 }
