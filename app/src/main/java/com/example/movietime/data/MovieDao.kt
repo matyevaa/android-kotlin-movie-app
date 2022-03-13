@@ -51,7 +51,7 @@ interface MovieDao {
 
     //Most recently released movie seen
     @Query("SELECT * FROM DetailedMovie Order BY release_date desc limit 1")
-    fun getMostRecent():Flow<DetailedMovie?>
+    fun getMostRecentlyReleased():Flow<DetailedMovie?>
 
     //Averages
     @Query("SELECT AVG(runtime) FROM DetailedMovie")
