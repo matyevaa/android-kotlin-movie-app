@@ -14,6 +14,7 @@ data class DetailedMovie(
     val title: String,
     val original_title: String,
     val overview: String,
+    //val popularity: Number, //Add Type Converter from Number to Int
     val vote_average: Double,
     val release_date: String?,
     val poster_path: String?,
