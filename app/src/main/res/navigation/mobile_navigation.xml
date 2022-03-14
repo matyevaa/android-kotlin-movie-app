@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/movie_detail"
         android:name="com.example.movietime.ui.detail.MovieDetailFragment"
-        android:label="Movie">
+        android:label="">
         <argument
             android:name="movie"
             app:argType="com.example.movietime.data.Movie"

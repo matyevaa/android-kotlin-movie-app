@@ -14,13 +14,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="64dp"
+        android:backgroundTint="#600FF5"
         android:clickable="true"
         android:contentDescription="@string/library_button"
         android:src="@drawable/ic_baseline_view_column_24"
+        android:tint="#EAE0EC"
+        app:backgroundTint="#600FF5"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@+id/rv_library_list"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ImageContrastCheck"
-        app:fabSize="mini"/>
+        app:tint="#FFEAE0EC"
+        tools:ignore="ImageContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_library_list"

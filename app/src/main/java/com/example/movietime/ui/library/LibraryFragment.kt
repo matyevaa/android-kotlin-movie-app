@@ -1,6 +1,7 @@
 package com.example.movietime.ui.library
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,7 +24,6 @@ import com.example.movietime.ui.home.MovieConst
 import com.example.movietime.ui.home.MovieListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
 class LibraryFragment : Fragment() {
 
     private var _binding: FragmentLibraryBinding? = null
@@ -31,7 +31,7 @@ class LibraryFragment : Fragment() {
     private val dbModel: BookmarkedMovieViewModel by viewModels()
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var fab: FloatingActionButton
-    private var isList:Boolean = true
+    private var isList:Boolean = true //TODO update to room property
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -60,21 +60,22 @@ class LibraryFragment : Fragment() {
             }
         }
 
-        fab.setOnClickListener { setView(root) }
+        fab.setOnClickListener {
+            setView(root)
+            isList = !isList
+        }
 
         return root
     }
 
-    private fun setView(root: View){ //TODO add some kind of animation
+    private fun setView(root: View){
         if (isList){
             searchResultsListRV.layoutManager = LinearLayoutManager(root.context)
             movieAdapter.setViewType(MovieConst.list_item)
-            isList = false
             fab.setImageResource(R.drawable.ic_baseline_view_column_24)
         }else{
             searchResultsListRV.layoutManager = GridLayoutManager(root.context, 2)
             movieAdapter.setViewType(MovieConst.tile_item)
-            isList = true
             fab.setImageResource(R.drawable.ic_baseline_view_list_24)
         }
         searchResultsListRV.adapter = movieAdapter
