@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@+id/scroll"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_centerInParent="true"
     android:layout_marginBottom="20dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#21FFFFFF"
             android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tv_title_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/white"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Star Wars: A New Hope"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_release_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textAlignment="center"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_avg_rating_detail"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_detail"
+                    tools:text="1977" />
+
+                <TextView
+                    android:id="@+id/tv_avg_rating_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_rate_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_release_year"
+                    app:layout_constraintTop_toTopOf="@+id/tv_release_year"
+                    tools:text="100" />
+
                 <ImageView
                     android:id="@+id/iv_poster_detail"
-                    android:layout_width="250dp"
-                    android:layout_height="350dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="7dp"
+                    android:layout_width="257dp"
+                    android:layout_height="311dp"
+                    android:layout_marginTop="8dp"
                     android:contentDescription="@string/movie_description"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_overview_detail"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/iv_poster_detail"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.586">
-
-                    <TextView
-                        android:id="@+id/tv_title_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:autoSizeTextType="uniform"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        app:layout_constrainedHeight="true"
-                        tools:text="Star Wars: A New Hope" />
-
-                    <TextView
-                        android:id="@+id/tv_release_year"
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="7dp"
-                        android:textAlignment="center"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?attr/textAppearanceSubtitle1"
-                        tools:text="1977" />
-
-                    <TextView
-                        android:id="@+id/tv_avg_rating_detail"
-                        app:drawableStartCompat="@drawable/ic_baseline_star_rate_24"
-                        android:layout_width="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textAppearance="?attr/textAppearanceSubtitle1"
-                        tools:text="100" />
-
-                </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_release_year" />
 
                 <TextView
                     android:id="@+id/tv_overview_detail"
@@ -71,8 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:autoSizeTextType="uniform"
-                    android:textColor="@color/white"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constrainedHeight="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -82,10 +83,10 @@
                 <TextView
                     android:id="@+id/genre"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_height="wrap_content"
                     android:text="@string/genre"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_overview_detail" />
 
@@ -93,9 +94,9 @@
                     android:id="@+id/runtime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/runtime"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/white"
-                    android:text="@string/runtime"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/genre" />
 
@@ -112,11 +113,11 @@
 
                 <TextView
                     android:id="@+id/tv_genre_detail"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toEndOf="@+id/genre"
                     app:layout_constraintTop_toBottomOf="@+id/tv_overview_detail"
                     tools:text="Sci-Fi" />
@@ -124,10 +125,10 @@
                 <TextView
                     android:id="@+id/tv_budget"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@+id/budget"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@+id/budget"
                     app:layout_constraintStart_toStartOf="@+id/tv_runtime"
                     app:layout_constraintTop_toBottomOf="@+id/tv_runtime"
                     tools:text="$13403143" />
@@ -136,9 +137,9 @@
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@+id/status"
-                    android:textColor="@color/white"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@+id/status"
                     app:layout_constraintStart_toStartOf="@+id/tv_budget"
                     app:layout_constraintTop_toBottomOf="@+id/tv_budget"
                     tools:text="Released" />
@@ -146,9 +147,9 @@
                 <TextView
                     android:id="@+id/tv_release_date_detail"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toEndOf="@+id/released"
                     app:layout_constraintStart_toStartOf="@+id/tv_status"
                     app:layout_constraintTop_toBottomOf="@+id/tv_status"
@@ -157,27 +158,26 @@
                 <TextView
                     android:id="@+id/budget"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:text="@string/budget"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/runtime" />
 
                 <TextView
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_height="wrap_content"
                     android:text="@string/status"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/budget" />
 
                 <TextView
                     android:id="@+id/released"
                     android:layout_width="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content"
                     android:text="@string/released"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"

@@ -46,11 +46,11 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        var gso: GoogleSignInOptions = GoogleSignInOptions
+        val gso: GoogleSignInOptions = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
             .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         val email = view.findViewById<TextView>(R.id.tv_email)
         val signInButton: SignInButton = view.findViewById(R.id.sign_in_button)
@@ -85,7 +85,7 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
 
             //Display Profile pic
             Glide.with(this)
-                .load(account!!.photoUrl)
+                .load(account!!.photoUrl?: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
                 .into(view.findViewById(R.id.mv_profile_pic))
 
             signOutButton.setOnClickListener {
@@ -95,6 +95,7 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun signIn() {
         val signInIntent: Intent = mGoogleSignInClient.getSignInIntent()
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -114,6 +115,7 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
             })
     }
 
+    @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {

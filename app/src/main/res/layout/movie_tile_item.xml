@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:background="@android:color/transparent"
+    app:cardBackgroundColor="#21FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,14 +17,15 @@
 
         <ImageView
             android:id="@+id/iv_poster"
-            android:layout_width="112dp"
-            android:layout_height="171dp"
+            android:layout_width="159dp"
+            android:layout_height="216dp"
             android:contentDescription="@string/movie_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,6 +41,7 @@
             tools:text="Star Wars: A New Hope" />
 
         <TextView
+            android:textColor="@color/white"
             android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

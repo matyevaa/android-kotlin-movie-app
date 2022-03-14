@@ -1,5 +1,6 @@
 package com.example.movietime.ui.home
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietime.data.Movie
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
     private var vType = MovieConst.list_item
     var movieList = listOf<Movie>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateMovieList(newMovieList: List<Movie>?) {
         movieList = newMovieList ?: listOf()
         notifyDataSetChanged()
@@ -80,7 +82,7 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
                 }
                 MovieConst.tile_item ->{
                     title.text = movie.title
-                    release_date.text = movie.release_date
+                    release_date.text = itemView.context.getString(R.string.date_year_format, movie.date())
                 }
             }
         }

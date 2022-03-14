@@ -61,21 +61,22 @@ class CalendarFragment : Fragment() {
             }
         }
 
-        fab.setOnClickListener { setView(root) }
+        fab.setOnClickListener {
+            setView(root)
+            isList = !isList
+        }
 
         return root
     }
 
-    private fun setView(root: View){ //TODO add some kind of animation
+    private fun setView(root: View){
         if (isList){
             searchResultsListRV.layoutManager = LinearLayoutManager(root.context)
             movieAdapter.setViewType(MovieConst.list_item)
-            isList = false
             fab.setImageResource(R.drawable.ic_baseline_view_column_24)
         }else{
             searchResultsListRV.layoutManager = GridLayoutManager(root.context, 2)
             movieAdapter.setViewType(MovieConst.tile_item)
-            isList = true
             fab.setImageResource(R.drawable.ic_baseline_view_list_24)
         }
         searchResultsListRV.adapter = movieAdapter

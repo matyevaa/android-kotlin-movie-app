@@ -20,8 +20,8 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
 
-
-    @Query("SELECT * FROM DetailedMovie WHERE release_date >= DATE('now','localtime','weekday 0', '-7 days')")
+    // list of movies release in the last and next 2 weeks
+    @Query("SELECT * FROM DetailedMovie WHERE release_date > DATETIME('now', '-14 day') and release_date < DATETIME('now', '14 day')")
     fun getRecentInfo():Flow<List<DetailedMovie>>
 
     @Query("SELECT * FROM DetailedMovie WHERE original_title = :name LIMIT 1")
