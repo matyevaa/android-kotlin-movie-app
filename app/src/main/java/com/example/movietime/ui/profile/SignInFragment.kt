@@ -4,12 +4,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.TextureView
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.movietime.R
 import com.example.movietime.databinding.FragmentCalendarBinding
 import com.example.movietime.ui.profile.LoginStatus.account
@@ -50,6 +52,7 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
             .build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
+        val email = view.findViewById<TextView>(R.id.tv_email)
         val signInButton: SignInButton = view.findViewById(R.id.sign_in_button)
         val signOutButton: Button = view.findViewById(R.id.sign_out_button)
         Log.d(TAG, "OnCreate: " + isLoggedIn)
@@ -60,6 +63,8 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
             view.findViewById<TextView>(R.id.tv_sign_in).visibility = View.VISIBLE
             signInButton.visibility = View.VISIBLE
             signInButton.setSize(SignInButton.SIZE_STANDARD)
+
+            email.visibility = View.INVISIBLE
 
             signInButton.setOnClickListener {
                 signIn()
@@ -73,6 +78,15 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
 
             view.findViewById<TextView>(R.id.tv_sign_in).visibility = View.INVISIBLE
             signInButton.visibility = View.INVISIBLE
+
+            //Display Email
+            email.visibility = View.VISIBLE
+            email.text = getString(R.string.email, account!!.email)
+
+            //Display Profile pic
+            Glide.with(this)
+                .load(account!!.photoUrl)
+                .into(view.findViewById(R.id.mv_profile_pic))
 
             signOutButton.setOnClickListener {
                 signOut()
