@@ -1,27 +1,38 @@
 package com.example.movietime.ui.calendar
 
+import android.app.PendingIntent
+import android.content.Intent
+
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
+
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.edit
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.movietime.MainActivity
 import com.example.movietime.R
-import com.example.movietime.data.Movie
-import com.example.movietime.data.toMovieList
+import com.example.movietime.data.*
 import com.example.movietime.databinding.FragmentLibraryBinding
 import com.example.movietime.ui.BookmarkedMovieViewModel
 import com.example.movietime.ui.home.MovieConst
 import com.example.movietime.ui.home.MovieListAdapter
+import com.example.movietime.work.MovieWorker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 
 class CalendarFragment : Fragment() {
@@ -102,4 +113,7 @@ class CalendarFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
 }

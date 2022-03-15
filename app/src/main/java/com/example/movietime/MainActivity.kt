@@ -17,10 +17,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.ActivityMainBinding
 import com.example.movietime.ui.profile.LoginStatus.account
 import com.example.movietime.ui.profile.LoginStatus.isLoggedIn
+import com.example.movietime.work.MovieWorker
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -69,6 +72,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.action_notification->{
+                val workRequest = OneTimeWorkRequestBuilder<MovieWorker>().build()
+                WorkManager.getInstance(this).enqueue(workRequest)
+                true
+            }
             R.id.action_profile -> {
                 findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
                 //Feel free to remove this ^ when adding in the profile page, i'll just tack on
@@ -98,20 +106,5 @@ class MainActivity : AppCompatActivity() {
             // ^ Uncomment to try sign on with google
         }
     }
-    private fun sendNotification(movie: DetailedMovie){
-        val builder = NotificationCompat.Builder(
-            applicationContext,
-            applicationContext.getString(R.string.notification_stars_channel))
-        builder.setSmallIcon(R.drawable.baseline_theaters_24)
-            .setContentTitle(applicationContext.getString(R.string.notification_stars_title, movie.original_title))
-            .setContentText(applicationContext.getString(R.string.notification_stars_text, movie.original_title))
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-        NotificationManagerCompat.from(applicationContext)
-            .notify(movie.original_title.hashCode(),builder.build())
-
-
-    }
-
 
 }

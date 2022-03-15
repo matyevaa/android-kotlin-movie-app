@@ -7,7 +7,7 @@
         android:id="@+id/action_share"
         android:checkable="true"
         android:icon="@drawable/ic_baseline_share_24"
-        android:title="@string/action_bookmark"
+        android:title="@string/action_share"
         app:showAsAction="ifRoom" />
 
     <item

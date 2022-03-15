@@ -4,6 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_notification"
+        android:checkable="true"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="@string/action_bookmark"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/overflowmenu"
         android:icon="@drawable/ic_action_account_light"
         android:title=""
