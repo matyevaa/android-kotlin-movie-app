@@ -72,15 +72,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_notification->{
-                val workRequest = OneTimeWorkRequestBuilder<MovieWorker>().build()
-                WorkManager.getInstance(this).enqueue(workRequest)
-                true
-            }
             R.id.action_profile -> {
                 findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
-                //Feel free to remove this ^ when adding in the profile page, i'll just tack on
-                // a sign out button when done
                 true
             }
             R.id.action_setting -> {
@@ -102,8 +95,7 @@ class MainActivity : AppCompatActivity() {
         isLoggedIn = acct != null
         account = acct
         if(!isLoggedIn){
-            //findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
-            // ^ Uncomment to try sign on with google
+            findNavController(R.id.nav_host_fragment).navigate(R.id.navigation_sign_in)
         }
     }
 
