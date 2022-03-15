@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_share_stats"
+        android:id="@+id/action_shar_stats"
         android:checkable="true"
         android:icon="@drawable/ic_baseline_share_24"
         android:title="@string/action_share_stats"
