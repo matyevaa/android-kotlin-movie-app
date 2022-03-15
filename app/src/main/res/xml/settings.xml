@@ -17,7 +17,6 @@
         <Preference
             android:title="Delete Database"
             android:key="@string/delete_database"
-            android:summary="This is a cool button"
             />
     </PreferenceCategory>
 

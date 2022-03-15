@@ -4,6 +4,7 @@ class BookmarkedMovie(private val dao: MovieDao)
 {
     suspend fun insertMovie(movie: DetailedMovie) = dao.insert(movie)
     suspend fun deleteMovie(movie: DetailedMovie) = dao.delete(movie)
+    suspend fun deleteAll() = dao.deleteAll()
 
     fun getAllDetailedMovie()=dao.getAllInfo()
     fun getMovieByName(name: String)=dao.getRepoByName(name)

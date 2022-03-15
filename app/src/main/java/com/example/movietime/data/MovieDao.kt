@@ -14,6 +14,9 @@ interface MovieDao {
     @Delete
     suspend fun delete(repo: DetailedMovie)
 
+    @Query("DELETE FROM DetailedMovie")
+    suspend fun deleteAll()
+
     @Query("SELECT * FROM DetailedMovie WHERE id = :id LIMIT 1")
     fun getCity(id: Int): Flow<DetailedMovie?>
 
@@ -29,6 +32,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM DetailedMovie WHERE id=238")
     fun getRecentInfoOnce():List<DetailedMovie>
+
 
 
     // STATS:
