@@ -45,4 +45,10 @@
         <item name="backgroundTint">@color/fui_bgGoogle</item>
         <item name="android:textColor">#757575</item>
     </style>
+
+    <style name="Settings" parent="TextAppearance.AppCompat">
+        <item name="android:colorBackground">#21FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>

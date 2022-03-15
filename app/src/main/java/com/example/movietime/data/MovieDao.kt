@@ -14,12 +14,14 @@ interface MovieDao {
     @Delete
     suspend fun delete(repo: DetailedMovie)
 
+    @Query("DELETE FROM DetailedMovie")
+    suspend fun deleteAll()
+
     @Query("SELECT * FROM DetailedMovie WHERE id = :id LIMIT 1")
     fun getCity(id: Int): Flow<DetailedMovie?>
 
     @Query("SELECT * FROM DetailedMovie")
     fun getAllInfo():Flow<List<DetailedMovie>>
-
 
     @Query("SELECT * FROM DetailedMovie WHERE release_date > DATETIME('now', '-20 day') and release_date < DATETIME('now', '20 day')")
     fun getRecentInfo():Flow<List<DetailedMovie>>
@@ -31,25 +33,34 @@ interface MovieDao {
     fun getRecentInfoOnce():List<DetailedMovie>
 
 
+
     // STATS:
-    /*
-    Movie with longest runtime
-    Select * FROM DetailedMovie WHERE runtime = (SELECT MAX(runtime) FROM DetailedMovie) limit 1
 
-    Movie with highest popularity
-    Select * FROM DetailedMovie WHERE popularity = (SELECT MAX(popularity) FROM DetailedMovie) limit 1
+    //Movie with longest runtime
+    @Query("Select * FROM DetailedMovie WHERE runtime = (SELECT MAX(runtime) FROM DetailedMovie) limit 1")
+    fun getLongestRuntime():Flow<DetailedMovie?>
 
-    Movie with highest budget
-    Select * FROM DetailedMovie WHERE budget = (SELECT MAX(budget) FROM DetailedMovie) limit 1
+    //Movie with highest popularity
+    //@Query("Select * FROM DetailedMovie WHERE popularity = (SELECT MAX(popularity) FROM DetailedMovie) limit 1")
+    //fun getHighestPopularity():Flow<DetailedMovie>
 
-    Total runtime of movies watched
-    SELECT SUM(runtime) FROM DetailedMovie
+    //Movie with highest budget
+    @Query("Select * FROM DetailedMovie WHERE budget = (SELECT MAX(budget) FROM DetailedMovie) limit 1")
+    fun getHighestBudget():Flow<DetailedMovie?>
 
-    Most recently released movie seen
-    SELECT * FROM DetailedMovie Order BY release_date desc limit 1
+    //Total runtime of movies watched
+    @Query("SELECT SUM(runtime) FROM DetailedMovie")
+    fun getTotalRuntime(): Flow<Int?>
 
-    Averages
-    SELECT AVG(runtime) FROM DetailedMovie
-    SELECT AVG(popularity) FROM DetailedMovie
-     */
+    //Most recently released movie seen
+    @Query("SELECT * FROM DetailedMovie Order BY release_date desc limit 1")
+    fun getMostRecentlyReleased():Flow<DetailedMovie?>
+
+    //Averages
+    @Query("SELECT AVG(runtime) FROM DetailedMovie")
+    fun getAverageRuntime():Flow<Int?>
+
+    //@Query("SELECT AVG(popularity) FROM DetailedMovie")
+    //fun getAveragePopularity():Number?
+
 }

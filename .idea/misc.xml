@@ -33,9 +33,18 @@
         <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/layout/notification.xml" value="0.4" />
         <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/menu/detail_menu.xml" value="0.176" />
         <entry key="..\:/Users/benyy/AndroidStudioProjects/final-project-final-project-team-4/app/src/main/res/menu/top_main_menu.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_detailed.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_library.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/timot/OneDrive/Desktop/final-project-final-project-team-4/app/src/main/res/layout/fragment_stats.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2132725430597771" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.19858156028368795" />
         <entry key="app/src/main/res/layout/fragment_detailed.xml" value="0.41938405797101447" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.11296296296296296" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_library.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.11398176291793313" />
+        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.11398176291793313" />
+        <entry key="app/src/main/res/layout/preferences_category.xml" value="0.1" />
+        <entry key="app/src/main/res/xml/settings.xml" value="0.19858156028368795" />
       </map>
     </option>
   </component>
