@@ -24,6 +24,11 @@ class BookmarkedMovieViewModel(application: Application): AndroidViewModel(appli
             getRecentMovieOnce()
         }
     }
+    fun deleteAll(){
+        viewModelScope.launch {
+            detailedMovie.deleteAll()
+        }
+    }
 
     fun getMovieByName(name: String) = detailedMovie.getMovieByName(name).asLiveData()
 
@@ -32,7 +37,6 @@ class BookmarkedMovieViewModel(application: Application): AndroidViewModel(appli
         viewModelScope.launch {
             detailedMovie.insertMovie(movie)
         }
-
     }
 
     fun deleteDetailedMovie(movie:DetailedMovie){
