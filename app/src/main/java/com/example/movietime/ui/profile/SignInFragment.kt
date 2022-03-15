@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.movietime.R
-import com.example.movietime.databinding.FragmentCalendarBinding
 import com.example.movietime.ui.profile.LoginStatus.account
 import com.example.movietime.ui.profile.LoginStatus.isLoggedIn
 import com.google.android.gms.auth.api.identity.Identity
@@ -36,9 +35,6 @@ object LoginStatus {
 
 class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
     private val TAG = "SignInFragment"
-
-    private var _binding: FragmentCalendarBinding? = null
-    private val binding get() = _binding!!
     private val RC_SIGN_IN = 0
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -136,6 +132,5 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
     }
 }
