@@ -42,4 +42,5 @@
     <string name="darkmode">darkmode</string>
     <string name="settings">Settings</string>
     <string name="listview">listview</string>
+    <string name="popular_movies">Popular Movies</string>
 </resources>

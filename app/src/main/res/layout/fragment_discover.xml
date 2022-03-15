@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -64,7 +64,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:text="Popular Movies"
+            android:text="@string/popular_movies"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -115,3 +115,4 @@
         </FrameLayout>
 
 </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
