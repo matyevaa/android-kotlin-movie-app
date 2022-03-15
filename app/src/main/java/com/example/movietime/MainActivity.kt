@@ -8,8 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,13 +15,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import com.example.movietime.data.DetailedMovie
 import com.example.movietime.databinding.ActivityMainBinding
 import com.example.movietime.ui.profile.LoginStatus.account
 import com.example.movietime.ui.profile.LoginStatus.isLoggedIn
-import com.example.movietime.work.MovieWorker
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
