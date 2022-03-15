@@ -38,13 +38,13 @@
         and the total runtime of all the movies I watched was %2$s minutes.
     </string>
 
-    <string name="longest_runtime_movie">&#8226; Movie with Longest Runtime:\n\t\t\t%1$s\n\t\t\tRuntime: %2$d minutes</string>
-    <string name="highest_budget_movie">&#8226; Movie with the Highest Budget:\n\t\t\t%1$s\n\t\t\tBudget: $%2$d</string>
-    <string name="total_runtime">&#8226; Total Runtime of All Movies Viewed:\n\t\t\tTotal Runtime: %1$d minutes</string>
+    <string name="longest_runtime_movie">&#8226; %1$s\n\t\t\t&#8226; Runtime: %2$d minutes</string>
+    <string name="highest_budget_movie">&#8226; %1$s\n\t\t\t &#8226; Budget: $%2$d</string>
+    <string name="total_runtime">&#8226; Total Runtime: %1$d minutes</string>
     <string name="total_runtime_time">%1$d</string>
-    <string name="most_recent_released_movie">&#8226; Most Recently Released Movie Viewed:\n\t\t\t%1$s</string>
+    <string name="most_recent_released_movie">&#8226; %1$s</string>
     <string name="most_recent_released_movie_name">%1$s</string>
-    <string name="avg_runtime">&#8226; Average Runtime of All Movies Viewed:\n\t\t\tAverage Runtime: %1$d minutes</string>
+    <string name="avg_runtime">&#8226; Average Runtime: %1$d minutes</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="delete_database">delete_database</string>
     <string name="darkmode">darkmode</string>
