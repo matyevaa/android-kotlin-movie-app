@@ -51,7 +51,6 @@ class MovieDetailFragment : Fragment(R.layout.fragment_detailed) {
         menuInflater.inflate(R.menu.detail_menu, menu)
         val bookmarkItem = menu.findItem(R.id.action_bookmark)
 
-
         viewModel.getMovieByName(args.movie.title).observe(viewLifecycleOwner) { bookmarkedRepo ->
             when (bookmarkedRepo) {
                 null -> {

@@ -29,7 +29,7 @@ interface MovieDao {
     @Query("SELECT * FROM DetailedMovie WHERE original_title = :name LIMIT 1")
     fun getRepoByName(name: String): Flow<DetailedMovie?>
 
-    @Query("SELECT * FROM DetailedMovie WHERE release_date > DATETIME('now', '-20 day') and release_date < DATETIME('now', '20 day')") //It is the godfather
+    @Query("SELECT * FROM DetailedMovie WHERE release_date > DATETIME('now', '-20 day') and release_date < DATETIME('now', '20 day')")
     fun getRecentInfoOnce():List<DetailedMovie>
 
 
