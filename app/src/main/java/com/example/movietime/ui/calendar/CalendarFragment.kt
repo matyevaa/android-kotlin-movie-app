@@ -54,6 +54,7 @@ class CalendarFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         isList = sharedPrefs.getBoolean(getString(R.string.listview), true)
 
@@ -87,6 +88,21 @@ class CalendarFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.calendar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.notification -> {
+                val workRequest = OneTimeWorkRequestBuilder<MovieWorker>().build()
+                WorkManager.getInstance(requireContext()).enqueue(workRequest)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setView(root: View){
