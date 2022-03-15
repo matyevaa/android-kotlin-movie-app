@@ -25,6 +25,7 @@
     <string name="action_bookmark">Bookmark this movie</string>
 
     <string name="action_share">Share this movie</string>
+    <string name="action_share_stats">Share Stats</string>
 
     <string name="notification_stars_title"> Upcoming Movie!</string>
     <string name="notification_stars_text"> %1$s is now upcoming this week!</string>
