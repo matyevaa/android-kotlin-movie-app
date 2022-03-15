@@ -39,7 +39,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2132725430597771" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.19858156028368795" />
         <entry key="app/src/main/res/layout/fragment_detailed.xml" value="0.41938405797101447" />
-        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_discover.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.11398176291793313" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.11398176291793313" />
