@@ -4,8 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.TextureView
-import android.view.View
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.Nullable
@@ -90,6 +89,7 @@ class SignInFragment : Fragment(R.layout.fragment_google_sign_in) {
             }
         }
     }
+
 
     @Suppress("DEPRECATION")
     private fun signIn() {
