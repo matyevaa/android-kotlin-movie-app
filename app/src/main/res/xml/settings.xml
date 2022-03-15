@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/settings">
+
+        <SwitchPreferenceCompat
+            app:key="@string/darkmode"
+            app:title="Enable DarkMode"/>
+
+        <SwitchPreferenceCompat
+            app:key="@string/listview"
+            app:title="List View"/>
+
+        <Preference
+            android:title="Delete Database"
+            android:key="@string/delete_database"
+            android:summary="This is a cool button"
+            />
+    </PreferenceCategory>
+
+</PreferenceScreen>

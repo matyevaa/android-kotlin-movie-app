@@ -38,4 +38,9 @@
     <string name="most_recent_released_movie">&#8226; Most Recently Released Movie Viewed:\n\t\t\t%1$s</string>
     <string name="avg_runtime">&#8226; Average Runtime of All Movies Viewed:\n\t\t\tAverage Runtime: %1$d minutes</string>
     <string name="profile_picture">Profile Picture</string>
+    <string name="delete_database">delete_database</string>
+    <string name="darkmode">darkmode</string>
+    <string name="settings">Settings</string>
+    <string name="listview">listview</string>
+    <string name="popular_movies">Popular Movies</string>
 </resources>

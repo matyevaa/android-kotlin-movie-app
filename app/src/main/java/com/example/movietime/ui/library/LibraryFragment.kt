@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +32,7 @@ class LibraryFragment : Fragment() {
     private val dbModel: BookmarkedMovieViewModel by viewModels()
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var fab: FloatingActionButton
-    private var isList:Boolean = true //TODO update to room property
+    private var isList:Boolean = true
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,6 +43,8 @@ class LibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        isList = sharedPrefs.getBoolean(getString(R.string.listview), true)
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
         searchResultsListRV = root.findViewById(R.id.rv_library_list)
@@ -61,8 +64,13 @@ class LibraryFragment : Fragment() {
         }
 
         fab.setOnClickListener {
+            Log.d(tag,"Click")
+            with (sharedPrefs.edit()) {
+                putBoolean(getString(R.string.listview), !isList)
+                isList = !isList
+                commit()
+            }
             setView(root)
-            isList = !isList
         }
 
         return root

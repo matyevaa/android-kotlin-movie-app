@@ -1,31 +1,50 @@
 package com.example.movietime.ui.settings
 
-import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import com.example.movietime.R
+import kotlin.math.log
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+
+class SettingsFragment : PreferenceFragmentCompat() {
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.settings, rootKey)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        val dark_button = view.findViewById<Switch>(R.id.switch_dark_mode)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        var darkmode = sharedPrefs.getBoolean(getString(R.string.darkmode), true)
 
-        dark_button.setOnCheckedChangeListener { _, isChecked ->
-            if(dark_button.isChecked){
+        if(darkmode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            view.setBackgroundColor(Color.parseColor("#21FFFFFF"))
+
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            view.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        }
+
+        sharedPrefs.registerOnSharedPreferenceChangeListener{ pref, key ->
+            val mode = pref.getBoolean(key, true)
+            if(mode){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                dark_button.text = "Disable Dark Mode"
+                view.setBackgroundColor(Color.parseColor("#21FFFFFF"))
+
             }
             else{
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                dark_button.text = "Enable Dark Mode"
-            }
+                view.setBackgroundColor(Color.parseColor("#FFFFFF"))}
         }
 
+        super.onViewCreated(view, savedInstanceState)
     }
 }
