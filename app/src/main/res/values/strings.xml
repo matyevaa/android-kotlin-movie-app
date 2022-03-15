@@ -32,11 +32,11 @@
     <string name="notification_stars_channel_title">Star count updates</string>
     <string name="share_text">Lets watch %1$s, It has an average rate of %2$.1f!!</string>
 
-    <string name="longest_runtime_movie">--Movie with Longest RunTime--\n %1$s \n RunTime %2$d minutes</string>
-    <string name="highest_budget_movie">--Movie with the Highest Budget--\n %1$s \n Budget $%2$d</string>
-    <string name="total_runtime">--Total Runtime of all Movies viewed--\n Total Runtime %1$d minutes</string>
-    <string name="most_recent_released_movie">--Most Recently Released Movie Viewed--\n %1$s</string>
-    <string name="avg_runtime">--Average Runtime of all Movies viewed--\n Average Runtime %1$d minutes</string>
+    <string name="longest_runtime_movie">&#8226; Movie with Longest Runtime:\n\t\t\t%1$s\n\t\t\tRuntime: %2$d minutes</string>
+    <string name="highest_budget_movie">&#8226; Movie with the Highest Budget:\n\t\t\t%1$s\n\t\t\tBudget: $%2$d</string>
+    <string name="total_runtime">&#8226; Total Runtime of All Movies Viewed:\n\t\t\tTotal Runtime: %1$d minutes</string>
+    <string name="most_recent_released_movie">&#8226; Most Recently Released Movie Viewed:\n\t\t\t%1$s</string>
+    <string name="avg_runtime">&#8226; Average Runtime of All Movies Viewed:\n\t\t\tAverage Runtime: %1$d minutes</string>
     <string name="profile_picture">Profile Picture</string>
     <string name="delete_database">delete_database</string>
     <string name="darkmode">darkmode</string>
