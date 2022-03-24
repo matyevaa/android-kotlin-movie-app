@@ -16,32 +16,32 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
      - Movie’s details
      - A list of similar movies on the bottom of the page (horizontally scrollable)
  - Browse
-  - Top rated movies
-  - Upcoming movies 
+   - Top rated movies
+   - Upcoming movies 
 - User Profile (Top nav bar)
- - Stats and Settings
-  - Show a separate tab with the user's information (explicit intent)
-  - Enable sign in option with Google account
+  - Stats and Settings
+    - Show a separate tab with the user's information (explicit intent)
+    - Enable sign in option with Google account
   - Ability to share stats (explicit intent) [similar to spotify’s year in review]
- - Stats info
-  - Watch minutes
-  - Longest watched movie
-  - Favorite genre
- - Settings
-  - Dark Mode
-  - Delete Account
+  - Stats info
+    - Watch minutes
+    - Longest watched movie
+    - Favorite genre
+  - Settings
+    - Dark Mode
+    - Delete Account
 - Library of watched movies (Bottom nav bar)
- - List format of movie posters 
- - Movies that have been added to the user's watch list
+  - List format of movie posters 
+  - Movies that have been added to the user's watch list
 
 ### Seperate Views:
 - Movie Detail
- - A detailed view of a selected movie: should display movie poster along with stats such as duration, year released, Director, Leading Actor, ect. View is reached by selecting a movie in the Library or Browse tab.
+  - A detailed view of a selected movie: should display movie poster along with stats such as duration, year released, Director, Leading Actor, ect. View is reached by selecting a movie in the Library or Browse tab.
 
 ### Notifications:
 - Movie
- - Now in theaters
-  - Notifies the user when a movie has recently been released
+  - Now in theaters
+    - Notifies the user when a movie has recently been released
 
 Build using the MovieDB API.
 
