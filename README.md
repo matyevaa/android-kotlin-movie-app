@@ -48,4 +48,7 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
 
 Build using the MovieDB API.
 
-![ezgif-2-65cfc86d35](https://user-images.githubusercontent.com/16601367/158436199-101f1f72-65d4-482a-9cd0-e22d6ad3d755.gif)
+<p align="center">
+ ![ezgif-2-65cfc86d35](https://user-images.githubusercontent.com/16601367/158436199-101f1f72-65d4-482a-9cd0-e22d6ad3d755.gif)
+ <img src="https://user-images.githubusercontent.com/16601367/158436199-101f1f72-65d4-482a-9cd0-e22d6ad3d755.gif" width="298" />
+</p>
