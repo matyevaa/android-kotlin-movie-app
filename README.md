@@ -1,4 +1,5 @@
-# Movie Time
+# Movie Time Android App (Winter 2022)
+## Overview
 Movie time is an app for Android written in Kotlin for tracking movies that the user has watched and for keeping tracking of upcoming releases.
 
 - The app allows users to monitor and browse movies and check the list of top rated and upcoming ones. 
