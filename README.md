@@ -11,10 +11,10 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
 ### Navigation Tab:
 - Main page (Bottom nav bar)
  - Search bar to search for movie by its title
-  - Results are the movies in the list format
-  - Each movie entry is clickable and opens a separate tab for each of the result movies (explicit intent)
-   - Movie’s details
-   - A list of similar movies on the bottom of the page (horizontally scrollable)
+   - Results are the movies in the list format
+   - Each movie entry is clickable and opens a separate tab for each of the result movies (explicit intent)
+     - Movie’s details
+     - A list of similar movies on the bottom of the page (horizontally scrollable)
  - Browse
   - Top rated movies
   - Upcoming movies 
