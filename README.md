@@ -6,7 +6,9 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
 - Users can sign in with their Google account to track their watched movies and gain insight into their watch history. 
 - Users can also be notified for when upcoming movies are released in theaters.
 
-<img width="298" alt="Screen Shot 2022-03-15 at 10 21 55 AM" src="https://user-images.githubusercontent.com/16601367/158436143-0ec6e258-353c-4b55-acc4-240123650519.png">
+<p align="center">
+ <img width="298" alt="Screen Shot 2022-03-15 at 10 21 55 AM" src="https://user-images.githubusercontent.com/16601367/158436143-0ec6e258-353c-4b55-acc4-240123650519.png">
+</p>
 
 ## User Interface
 ### Navigation Tab:
