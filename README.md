@@ -1,5 +1,5 @@
 # Movie Time
-Movie time is an app for tracking movies that you've watch and for keeping tracking of upcoming releases.
+Movie time is an app for Android written in Kotlin for tracking movies that the user has watched and for keeping tracking of upcoming releases.
 
 <img width="298" alt="Screen Shot 2022-03-15 at 10 21 55 AM" src="https://user-images.githubusercontent.com/16601367/158436143-0ec6e258-353c-4b55-acc4-240123650519.png">
 
