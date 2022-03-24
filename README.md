@@ -8,7 +8,7 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
 <img width="298" alt="Screen Shot 2022-03-15 at 10 21 55 AM" src="https://user-images.githubusercontent.com/16601367/158436143-0ec6e258-353c-4b55-acc4-240123650519.png">
 
 ## User Interface
-###Navigation Tab:
+### Navigation Tab:
 - Main page (Bottom nav bar)
  - Search bar to search for movie by its title
   - Results are the movies in the list format
@@ -34,11 +34,11 @@ Movie time is an app for Android written in Kotlin for tracking movies that the 
  - List format of movie posters 
  - Movies that have been added to the user's watch list
 
-###Seperate Views:
+### Seperate Views:
 - Movie Detail
  - A detailed view of a selected movie: should display movie poster along with stats such as duration, year released, Director, Leading Actor, ect. View is reached by selecting a movie in the Library or Browse tab.
 
-###Notifications:
+### Notifications:
 - Movie
  - Now in theaters
   - Notifies the user when a movie has recently been released
